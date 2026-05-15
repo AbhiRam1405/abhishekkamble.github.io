@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Abhishek Kamble is a Software Developer & Cloud Enthusiast based in Pune, India — specializing in Full Stack Development, Java Backend Systems, AWS Cloud, and Automation. Explore projects, certifications, and skills." />
+  <meta name="keywords" content="Abhishek Kamble, Software Developer, Cloud, Full Stack, Java, Backend, Pune" />
+  <meta name="author" content="Abhishek Kamble" />
+  <meta property="og:title" content="Abhishek Kamble | Software Developer & Cloud Enthusiast" />
+  <meta property="og:description" content="Portfolio of Abhishek Kamble – Full Stack, Java, Cloud & Automation developer." />
+  <meta property="og:type" content="website" />
+  <title>Abhishek Kamble | Software Developer & Cloud Enthusiast</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Poppins + Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+
+  <!-- AOS Animation Library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" crossorigin="anonymous" />
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'bg-base':   '#020617',
+            'primary':   '#8B5CF6',
+            'accent':    '#06B6D4',
+            'text-main': '#F8FAFC',
+          },
+          fontFamily: {
+            heading: ['Poppins', 'sans-serif'],
+            body:    ['Inter',   'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+</head>
+
+<body class="bg-bg-base text-text-main font-body antialiased overflow-x-hidden">
+
+  <!-- ============================================================
+       NAVBAR
+  ============================================================ -->
+  <header id="navbar" role="banner">
+    <nav id="main-nav" class="glass-card fixed top-0 left-0 right-0 z-50" aria-label="Main navigation">
+      <div class="container-main flex items-center justify-between py-4">
+
+        <!-- Logo -->
+        <a href="#hero" id="nav-logo" class="font-heading font-bold text-xl text-primary" aria-label="Abhishek Kamble Home">
+          AK<span class="text-accent">.</span>
+        </a>
+
+        <!-- Desktop Nav Links -->
+        <ul id="nav-links" class="hidden md:flex items-center gap-6 font-body text-sm font-medium" role="list">
+          <li><a href="#about"          class="nav-link" aria-label="About section">About</a></li>
+          <li><a href="#skills"         class="nav-link" aria-label="Skills section">Skills</a></li>
+          <li><a href="#services"       class="nav-link" aria-label="Services section">Services</a></li>
+          <li><a href="#projects"       class="nav-link" aria-label="Projects section">Projects</a></li>
+          <li><a href="#certifications" class="nav-link" aria-label="Certifications section">Certifications</a></li>
+          <li><a href="#achievements"   class="nav-link" aria-label="Achievements section">Achievements</a></li>
+          <li><a href="#contact"        class="btn-primary text-xs px-4 py-2" aria-label="Contact section">Contact</a></li>
+        </ul>
+
+        <!-- Mobile Hamburger -->
+        <button id="mobile-menu-btn" class="md:hidden flex flex-col gap-1.5 p-2 rounded-lg hover:bg-white/10 transition" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-nav">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+
+      <!-- Mobile Nav Menu -->
+      <div id="mobile-nav" class="md:hidden hidden px-4 pb-4" role="navigation" aria-label="Mobile navigation">
+        <ul class="flex flex-col gap-3 font-body text-sm font-medium" role="list">
+          <li><a href="#about"          class="nav-link block" aria-label="About">About</a></li>
+          <li><a href="#skills"         class="nav-link block" aria-label="Skills">Skills</a></li>
+          <li><a href="#services"       class="nav-link block" aria-label="Services">Services</a></li>
+          <li><a href="#projects"       class="nav-link block" aria-label="Projects">Projects</a></li>
+          <li><a href="#certifications" class="nav-link block" aria-label="Certifications">Certifications</a></li>
+          <li><a href="#achievements"   class="nav-link block" aria-label="Achievements">Achievements</a></li>
+          <li><a href="#resume"         class="nav-link block" aria-label="Resume">Resume</a></li>
+          <li><a href="#contact"        class="btn-primary block text-center" aria-label="Contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ============================================================
+       HERO SECTION
+  ============================================================ -->
+  <section id="hero" class="hero-section relative overflow-hidden" aria-label="Hero introduction">
+
+    <!-- Particle canvas background -->
+    <canvas id="hero-particles" class="hero-particles-canvas" aria-hidden="true"></canvas>
+
+    <!-- Animated gradient blobs -->
+    <div class="hero-blob hero-blob-1" aria-hidden="true"></div>
+    <div class="hero-blob hero-blob-2" aria-hidden="true"></div>
+    <div class="hero-blob hero-blob-3" aria-hidden="true"></div>
+
+    <!-- Grid overlay texture -->
+    <div class="hero-grid-overlay" aria-hidden="true"></div>
+
+    <div class="container-main relative z-10 min-h-screen flex items-center pt-20 pb-10">
+      <div class="hero-layout">
+
+        <!-- ══════════════ LEFT COLUMN ══════════════ -->
+        <div class="hero-left" id="hero-left">
+
+          <!-- Available badge -->
+          <div class="hero-available-badge" id="hero-available-badge">
+            <span class="hero-badge-dot" aria-hidden="true"></span>
+            <span>Available for opportunities</span>
+          </div>
+
+          <!-- Greeting -->
+          <p class="hero-greeting" id="hero-greeting">
+            <span class="hero-wave" aria-hidden="true">👋</span> Hello, I'm
+          </p>
+
+          <!-- Name heading -->
+          <h1 class="hero-name" id="hero-name">
+            Abhishek<br />
+            <span class="hero-name-gradient">Kamble</span>
+          </h1>
+
+          <!-- Typing animation row -->
+          <div class="hero-typing-row" aria-live="polite" aria-label="Role">
+            <span class="hero-typing-prefix">I'm a </span>
+            <span class="hero-typing-text" id="hero-typing-text" aria-hidden="true"></span>
+            <span class="hero-typing-cursor" aria-hidden="true">|</span>
+          </div>
+
+          <!-- Bio -->
+          <p class="hero-bio" id="hero-bio">
+            Passionate about building scalable systems, cloud-native solutions,
+            and automation workflows. Turning complex problems into elegant code.
+          </p>
+
+          <!-- Stat chips -->
+          <div class="hero-stats" id="hero-stats">
+            <div class="hero-stat-chip">
+              <span class="hero-stat-num">2+</span>
+              <span class="hero-stat-label">Years Coding</span>
+            </div>
+            <div class="hero-stat-chip">
+              <span class="hero-stat-num">10+</span>
+              <span class="hero-stat-label">Projects Built</span>
+            </div>
+            <div class="hero-stat-chip">
+              <span class="hero-stat-num">200+</span>
+              <span class="hero-stat-label">Problems Solved</span>
+            </div>
+          </div>
+
+          <!-- CTA buttons -->
+          <div class="hero-cta-row" id="hero-cta-row">
+            <a href="#projects"
+               id="hero-btn-projects"
+               class="btn-hero-primary"
+               aria-label="View Projects">
+              <i class="fa-solid fa-folder-open" aria-hidden="true"></i>
+              View Projects
+              <span class="btn-hero-shine" aria-hidden="true"></span>
+            </a>
+            <a href="assets/resume/abhishek_kamble_resume.pdf"
+               download
+               id="hero-btn-resume"
+               class="btn-hero-outline"
+               aria-label="Download Resume">
+              <i class="fa-solid fa-download" aria-hidden="true"></i>
+              Download CV
+            </a>
+          </div>
+
+          <!-- Social icons -->
+          <div class="hero-socials" id="hero-socials">
+            <span class="hero-socials-label">Find me on</span>
+            <div class="hero-socials-icons">
+              <a href="https://github.com/abhishekkamble"
+                 target="_blank" rel="noopener noreferrer"
+                 id="hero-social-github"
+                 class="hero-social-btn"
+                 aria-label="GitHub Profile">
+                <i class="fa-brands fa-github" aria-hidden="true"></i>
+              </a>
+              <a href="https://linkedin.com/in/abhishekkamble"
+                 target="_blank" rel="noopener noreferrer"
+                 id="hero-social-linkedin"
+                 class="hero-social-btn"
+                 aria-label="LinkedIn Profile">
+                <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+              </a>
+              <a href="mailto:abhishek.kamble@example.com"
+                 id="hero-social-email"
+                 class="hero-social-btn"
+                 aria-label="Send Email">
+                <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+              </a>
+            </div>
+            <!-- Scroll cue -->
+            <a href="#about" class="hero-scroll-cue" aria-label="Scroll to About">
+              <span class="hero-scroll-cue-line"></span>
+              <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div><!-- /hero-left -->
+
+        <!-- ══════════════ RIGHT COLUMN ══════════════ -->
+        <div class="hero-right" id="hero-right" aria-hidden="true">
+
+          <!-- Outer orbit ring -->
+          <div class="hero-orbit-ring hero-orbit-outer">
+            <!-- Orbiting tech icon 1 -->
+            <div class="hero-orbit-icon" style="--orbit-delay:0s; --orbit-angle:0deg;">
+              <div class="hero-orbit-icon-inner">
+                <i class="fa-brands fa-java" title="Java"></i>
+              </div>
+            </div>
+            <!-- Orbiting tech icon 2 -->
+            <div class="hero-orbit-icon" style="--orbit-delay:-3s; --orbit-angle:120deg;">
+              <div class="hero-orbit-icon-inner">
+                <i class="fa-brands fa-aws" title="AWS"></i>
+              </div>
+            </div>
+            <!-- Orbiting tech icon 3 -->
+            <div class="hero-orbit-icon" style="--orbit-delay:-6s; --orbit-angle:240deg;">
+              <div class="hero-orbit-icon-inner">
+                <i class="fa-brands fa-python" title="Python"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Inner orbit ring -->
+          <div class="hero-orbit-ring hero-orbit-inner">
+            <div class="hero-orbit-icon hero-orbit-icon-sm" style="--orbit-delay:-1s; --orbit-angle:60deg;">
+              <div class="hero-orbit-icon-inner">
+                <i class="fa-brands fa-js" title="JavaScript"></i>
+              </div>
+            </div>
+            <div class="hero-orbit-icon hero-orbit-icon-sm" style="--orbit-delay:-4s; --orbit-angle:180deg;">
+              <div class="hero-orbit-icon-inner">
+                <i class="fa-brands fa-github" title="GitHub"></i>
+              </div>
+            </div>
+            <div class="hero-orbit-icon hero-orbit-icon-sm" style="--orbit-delay:-2s; --orbit-angle:300deg;">
+              <div class="hero-orbit-icon-inner">
+                <i class="fa-solid fa-database" title="SQL"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Central avatar card -->
+          <div class="hero-avatar-card">
+            <div class="hero-avatar-glow" aria-hidden="true"></div>
+            <div class="hero-avatar-img-wrapper">
+              <!-- Profile image; fallback to initials -->
+              <img src="assets/images/profile.jpg"
+                   alt="Abhishek Kamble – Software Developer"
+                   class="hero-avatar-img"
+                   id="hero-avatar-img"
+                   onerror="this.style.display='none';document.getElementById('hero-avatar-initials').style.display='flex';" />
+              <div class="hero-avatar-initials" id="hero-avatar-initials" style="display:none;" aria-hidden="true">AK</div>
+            </div>
+            <!-- Status pill -->
+            <div class="hero-avatar-status">
+              <span class="hero-badge-dot" aria-hidden="true"></span>
+              Open to Work
+            </div>
+          </div>
+
+          <!-- Floating glass mini-cards -->
+          <div class="hero-float-card hero-float-card-tl glass-card">
+            <i class="fa-solid fa-code hero-float-card-icon text-primary" aria-hidden="true"></i>
+            <div>
+              <p class="hero-float-card-title">Full Stack</p>
+              <p class="hero-float-card-sub">Dev &amp; Architecture</p>
+            </div>
+          </div>
+
+          <div class="hero-float-card hero-float-card-br glass-card">
+            <i class="fa-brands fa-aws hero-float-card-icon text-accent" aria-hidden="true"></i>
+            <div>
+              <p class="hero-float-card-title">Cloud</p>
+              <p class="hero-float-card-sub">AWS Certified</p>
+            </div>
+          </div>
+
+          <div class="hero-float-card hero-float-card-bl glass-card">
+            <i class="fa-solid fa-robot hero-float-card-icon text-primary" aria-hidden="true"></i>
+            <div>
+              <p class="hero-float-card-title">Automation</p>
+              <p class="hero-float-card-sub">Scripts &amp; Workflows</p>
+            </div>
+          </div>
+
+        </div><!-- /hero-right -->
+      </div><!-- /hero-layout -->
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ABOUT SECTION
+  ============================================================ -->
+  <section id="about" class="section-pad about-section" aria-label="About Abhishek Kamble">
+    <div class="container-main">
+
+      <!-- Section header -->
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">Get To Know Me</span>
+        <h2 class="section-title">About <span class="text-gradient">Me</span></h2>
+        <div class="section-divider"></div>
+      </div>
+
+      <!-- Two-column layout -->
+      <div class="about-layout">
+
+        <!-- ══════════════ LEFT – Visual Panel ══════════════ -->
+        <div class="about-left" data-aos="fade-right" data-aos-delay="100">
+
+          <!-- Decorative glow ring behind image -->
+          <div class="about-img-glow" aria-hidden="true"></div>
+
+          <!-- Profile image card -->
+          <div class="about-img-card glass-card">
+            <img src="assets/images/profile.jpg"
+                 alt="Abhishek Kamble – Software Developer"
+                 class="about-img"
+                 id="about-profile-img"
+                 onerror="this.style.display='none';document.getElementById('about-initials').style.display='flex';" />
+            <div class="about-initials" id="about-initials" style="display:none;" aria-hidden="true">AK</div>
+
+            <!-- Corner accent bars -->
+            <span class="about-img-corner about-img-corner-tl" aria-hidden="true"></span>
+            <span class="about-img-corner about-img-corner-br" aria-hidden="true"></span>
+          </div>
+
+          <!-- Floating info chip – top right -->
+          <div class="about-chip about-chip-tr glass-card" data-aos="fade-left" data-aos-delay="200">
+            <i class="fa-solid fa-location-dot about-chip-icon" style="color:#06B6D4;" aria-hidden="true"></i>
+            <div>
+              <p class="about-chip-title">Location</p>
+              <p class="about-chip-value">Pune, India</p>
+            </div>
+          </div>
+
+          <!-- Floating info chip – bottom left -->
+          <div class="about-chip about-chip-bl glass-card" data-aos="fade-right" data-aos-delay="300">
+            <i class="fa-solid fa-briefcase about-chip-icon" style="color:#8B5CF6;" aria-hidden="true"></i>
+            <div>
+              <p class="about-chip-title">Focus</p>
+              <p class="about-chip-value">Full Stack &amp; Cloud</p>
+            </div>
+          </div>
+
+          <!-- Decorative dots grid -->
+          <div class="about-dots-grid" aria-hidden="true">
+            <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <g opacity="0.25">
+                <circle cx="10" cy="10" r="2" fill="#8B5CF6"/>
+                <circle cx="30" cy="10" r="2" fill="#8B5CF6"/>
+                <circle cx="50" cy="10" r="2" fill="#8B5CF6"/>
+                <circle cx="70" cy="10" r="2" fill="#8B5CF6"/>
+                <circle cx="10" cy="30" r="2" fill="#06B6D4"/>
+                <circle cx="30" cy="30" r="2" fill="#06B6D4"/>
+                <circle cx="50" cy="30" r="2" fill="#06B6D4"/>
+                <circle cx="70" cy="30" r="2" fill="#06B6D4"/>
+                <circle cx="10" cy="50" r="2" fill="#8B5CF6"/>
+                <circle cx="30" cy="50" r="2" fill="#8B5CF6"/>
+                <circle cx="50" cy="50" r="2" fill="#8B5CF6"/>
+                <circle cx="70" cy="50" r="2" fill="#8B5CF6"/>
+                <circle cx="10" cy="70" r="2" fill="#06B6D4"/>
+                <circle cx="30" cy="70" r="2" fill="#06B6D4"/>
+                <circle cx="50" cy="70" r="2" fill="#06B6D4"/>
+                <circle cx="70" cy="70" r="2" fill="#06B6D4"/>
+              </g>
+            </svg>
+          </div>
+        </div><!-- /about-left -->
+
+        <!-- ══════════════ RIGHT – Content Panel ══════════════ -->
+        <div class="about-right" data-aos="fade-left" data-aos-delay="150">
+
+          <!-- Intro badge -->
+          <span class="about-intro-badge">
+            <i class="fa-solid fa-terminal" aria-hidden="true"></i> Developer Profile
+          </span>
+
+          <!-- Headline -->
+          <h3 class="about-headline">
+            Building Scalable Systems,<br />
+            <span class="text-gradient">One Line at a Time</span>
+          </h3>
+
+          <!-- Bio paragraphs -->
+          <div class="about-bio">
+            <p>
+              I'm <strong class="text-white">Abhishek Kamble</strong>, a passionate Software Developer
+              based in Pune, India, specializing in Full Stack Development, Java-based backend systems,
+              and Cloud Computing. I enjoy crafting applications that are both technically robust and
+              delightful to use.
+            </p>
+            <p>
+              My journey in software started with curiosity about how things work under the hood —
+              that curiosity has grown into a professional focus on backend architecture, REST APIs,
+              and cloud-native deployment on AWS. I believe in writing clean, maintainable code and
+              building solutions that scale.
+            </p>
+            <p>
+              I'm a continuous learner who stays current with evolving technologies, and I bring a
+              problem-solving mindset to every project — from concept and architecture to deployment
+              and automation.
+            </p>
+          </div>
+
+          <!-- Technical interests -->
+          <div class="about-interests">
+            <p class="about-interests-label">
+              <i class="fa-solid fa-circle-nodes" aria-hidden="true"></i> Technical Interests
+            </p>
+            <div class="about-interests-tags" id="about-interests-tags">
+              <span class="about-tag">☁️ Cloud Computing</span>
+              <span class="about-tag">⚙️ Backend Systems</span>
+              <span class="about-tag">🌐 Full Stack Dev</span>
+              <span class="about-tag">🤖 Automation</span>
+              <span class="about-tag">☕ Java &amp; Spring</span>
+              <span class="about-tag">🗄️ Databases</span>
+              <span class="about-tag">🔗 REST APIs</span>
+              <span class="about-tag">🐍 Python</span>
+            </div>
+          </div>
+
+          <!-- Stats row -->
+          <div class="about-stats-row" id="about-stats-row">
+            <div class="about-stat glass-card">
+              <span class="about-stat-num" data-target="10">0</span><span class="about-stat-suffix">+</span>
+              <span class="about-stat-label">Projects Completed</span>
+            </div>
+            <div class="about-stat glass-card">
+              <span class="about-stat-num" data-target="3">0</span><span class="about-stat-suffix">+</span>
+              <span class="about-stat-label">Certifications</span>
+            </div>
+            <div class="about-stat glass-card">
+              <span class="about-stat-num" data-target="15">0</span><span class="about-stat-suffix">+</span>
+              <span class="about-stat-label">Technologies</span>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="about-cta-row">
+            <a href="#contact" class="btn-hero-primary" id="about-btn-contact" aria-label="Contact Abhishek">
+              <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+              Let's Talk
+              <span class="btn-hero-shine" aria-hidden="true"></span>
+            </a>
+            <a href="#projects" class="btn-hero-outline" id="about-btn-projects" aria-label="View Projects">
+              <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+              View Work
+            </a>
+          </div>
+
+        </div><!-- /about-right -->
+      </div><!-- /about-layout -->
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SKILLS SECTION
+  ============================================================ -->
+  <section id="skills" class="section-pad section-alt" aria-label="Technical Skills">
+    <div class="container-main">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">What I Know</span>
+        <h2 class="section-title">Technical <span class="text-gradient">Skills</span></h2>
+        <p class="section-subtitle">Technologies and tools I work with</p>
+      </div>
+      <!-- Skills tabs -->
+      <div id="skills-tabs"   class="flex flex-wrap justify-center gap-3 mb-10" data-aos="fade-up" data-aos-delay="100" role="tablist" aria-label="Skill categories"></div>
+      <!-- Skills grid injected by script.js -->
+      <div id="skills-grid"   class="grid-auto-fill" data-aos="fade-up" data-aos-delay="150" role="tabpanel"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SERVICES SECTION
+  ============================================================ -->
+  <section id="services" class="section-pad" aria-label="Services Offered">
+    <div class="container-main">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">What I Offer</span>
+        <h2 class="section-title">My <span class="text-gradient">Services</span></h2>
+        <p class="section-subtitle">How I can add value to your team or project</p>
+      </div>
+      <!-- Services grid injected by script.js -->
+      <div id="services-grid" class="grid-auto-fill" data-aos="fade-up" data-aos-delay="100"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PROJECTS SECTION
+  ============================================================ -->
+  <section id="projects" class="section-pad section-alt" aria-label="Projects Portfolio">
+    <div class="container-main">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">What I've Built</span>
+        <h2 class="section-title">Featured <span class="text-gradient">Projects</span></h2>
+        <p class="section-subtitle">A showcase of my best work</p>
+      </div>
+      <!-- Project filter buttons -->
+      <div id="project-filters" class="flex flex-wrap justify-center gap-3 mb-10" data-aos="fade-up" data-aos-delay="100" role="group" aria-label="Filter projects by category"></div>
+      <!-- Projects grid injected by script.js -->
+      <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" data-aos="fade-up" data-aos-delay="150"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CERTIFICATIONS SECTION
+  ============================================================ -->
+  <section id="certifications" class="section-pad" aria-label="Certifications">
+    <div class="container-main">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">Verified Credentials</span>
+        <h2 class="section-title">My <span class="text-gradient">Certifications</span></h2>
+        <p class="section-subtitle">Industry-recognized certifications and courses</p>
+      </div>
+      <!-- Certifications grid injected by script.js -->
+      <div id="certifications-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" data-aos="fade-up" data-aos-delay="100"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ACHIEVEMENTS SECTION
+  ============================================================ -->
+  <section id="achievements" class="section-pad section-alt" aria-label="Achievements">
+    <div class="container-main">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">Milestones</span>
+        <h2 class="section-title">My <span class="text-gradient">Achievements</span></h2>
+        <p class="section-subtitle">Highlights from my academic and professional journey</p>
+      </div>
+      <!-- Achievements list injected by script.js -->
+      <div id="achievements-grid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6" data-aos="fade-up" data-aos-delay="100"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       RESUME SECTION
+  ============================================================ -->
+  <section id="resume" class="section-pad" aria-label="Resume">
+    <div class="container-main text-center">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">My CV</span>
+        <h2 class="section-title">Download <span class="text-gradient">Resume</span></h2>
+        <p class="section-subtitle">Get a detailed overview of my experience and skills</p>
+      </div>
+      <!-- Resume content injected by script.js -->
+      <div id="resume-content" data-aos="fade-up" data-aos-delay="100"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACT SECTION
+  ============================================================ -->
+  <section id="contact" class="section-pad section-alt" aria-label="Contact">
+    <div class="container-main">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">Let's Connect</span>
+        <h2 class="section-title">Get In <span class="text-gradient">Touch</span></h2>
+        <p class="section-subtitle">Available for full-time roles, freelance projects, and collaborations</p>
+      </div>
+      <!-- Contact content injected by script.js -->
+      <div id="contact-content" data-aos="fade-up" data-aos-delay="100"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer id="footer" class="py-8 border-t border-white/10" role="contentinfo">
+    <div class="container-main flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/50">
+      <!-- Footer content injected by script.js -->
+      <div id="footer-content"></div>
+      <p>Built By <span class="text-primary"></span> Abhishek Kamble</p>
+    </div>
+  </footer>
+
+  <!-- Scroll-to-top Button -->
+  <button id="scroll-top-btn" class="btn-icon fixed bottom-6 right-6 z-50 opacity-0 pointer-events-none transition-all duration-300" aria-label="Scroll to top">
+    <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+  </button>
+
+  <!-- AOS JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" crossorigin="anonymous"></script>
+  <!-- Portfolio Data -->
+  <script src="script.js"></script>
+</body>
+</html>
