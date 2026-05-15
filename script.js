@@ -15,16 +15,16 @@ const portfolioData = {
     name:         'Abhishek Kamble',
     title:        'Software Developer & Cloud Enthusiast',
     shortBio:     'Full Stack | Java | Cloud | Backend | Automation',
-    about: `I am a passionate Software Developer based in Pune, Maharashtra, India,
+    about: `I am a passionate Software Developer based in Solapur, Maharashtra, India,
             with a strong focus on Full Stack Development, Cloud Computing, Java,
             Backend Engineering, and Automation. I love building scalable, efficient
             systems and continuously exploring emerging technologies to solve real-world problems.`,
-    email:        'abhishek.kamble@example.com',
-    github:       'https://github.com/abhishekkamble',
-    linkedin:     'https://linkedin.com/in/abhishekkamble',
+    email:        'abhishek2005kamble@gmail.com',
+    github:       'https://github.com/AbhishekKambleGit',
+    linkedin:     'https://www.linkedin.com/in/abhishekkamble-dev/',
     resumePath:   'assets/resume/abhishek_kamble_resume.pdf',
     profileImage: 'assets/images/profile.jpg',
-    location:     'Pune, Maharashtra, India',
+    location:     'Solapur, Maharashtra, India',
     available:    true,
   },
 
@@ -93,7 +93,7 @@ const portfolioData = {
       description: 'A scalable full-stack web application with cloud-native backend.',
       features:    ['Feature A', 'Feature B', 'Feature C'],
       techStack:   ['Java', 'Spring Boot', 'AWS', 'React'],
-      github:      'https://github.com/abhishekkamble/project-alpha',
+      github:      'https://github.com/AbhishekKambleGit/project-alpha',
       liveDemo:    '',
       image:       'assets/images/projects/project-alpha.jpg',
       category:    'Full Stack',
@@ -106,7 +106,7 @@ const portfolioData = {
       description: 'AWS resource monitoring dashboard with real-time metrics.',
       features:    ['Real-time metrics', 'Alert system', 'Cost tracking'],
       techStack:   ['Python', 'AWS', 'JavaScript'],
-      github:      'https://github.com/abhishekkamble/cloud-monitor',
+      github:      'https://github.com/AbhishekKambleGit/cloud-monitor',
       liveDemo:    '',
       image:       'assets/images/projects/cloud-monitor.jpg',
       category:    'Cloud',
@@ -119,7 +119,7 @@ const portfolioData = {
       description: 'Python-based automation toolkit for repetitive dev workflows.',
       features:    ['Task scheduling', 'Report generation', 'API integration'],
       techStack:   ['Python', 'Selenium', 'REST API'],
-      github:      'https://github.com/abhishekkamble/autoscript',
+      github:      'https://github.com/AbhishekKambleGit/autoscript',
       liveDemo:    '',
       image:       'assets/images/projects/autoscript.jpg',
       category:    'Automation',
@@ -189,9 +189,9 @@ const portfolioData = {
 
   /* --- Contact --- */
   contact: {
-    email:    'abhishek.kamble@example.com',
-    linkedin: 'https://linkedin.com/in/abhishekkamble',
-    github:   'https://github.com/abhishekkamble',
+    email:    'abhishek2005kamble@gmail.com',
+    linkedin: 'https://www.linkedin.com/in/abhishekkamble-dev/',
+    github:   'https://github.com/AbhishekKambleGit',
     formFields: [
       { id: 'contact-name',    label: 'Your Name',    type: 'text',     placeholder: 'John Doe',             required: true },
       { id: 'contact-email',   label: 'Email Address',type: 'email',    placeholder: 'john@example.com',     required: true },
@@ -763,7 +763,19 @@ function renderContact() {
 }
 
 /* ---------------------------------------------------------------
-   16. EXPOSE DATA GLOBALLY (for section scripts)
+   16. RENDER FOOTER
+--------------------------------------------------------------- */
+function renderFooter() {
+  const el = document.getElementById('footer-content');
+  if (!el) return;
+  const year = new Date().getFullYear();
+  el.innerHTML = `
+    <p>© ${year} <span class="text-primary font-semibold">${portfolioData.personal.name}</span>. All rights reserved.</p>
+  `;
+}
+
+/* ---------------------------------------------------------------
+   17. EXPOSE DATA GLOBALLY (for section scripts)
 --------------------------------------------------------------- */
 window.portfolioData = portfolioData;
 
