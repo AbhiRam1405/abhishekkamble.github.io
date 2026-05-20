@@ -156,10 +156,28 @@ const portfolioData = {
   /* --- Achievements --- */
   achievements: [
     {
+      title:       '🥈 Second Prize – Dexter InnoFest',
+      description: 'Secured Second Prize at the National Level Programming Competition – Dexter InnoFest 2024–25 (Genius Ideas), organized by the Dept. of CS & CA, Punyashlok Ahilyadevi Holkar Solapur University.',
+      year:        'Mar 2025',
+      icon:        'fa-solid fa-medal',
+    },
+    {
+      title:       '🥇 Winner – Tech-Master 2K25',
+      description: 'Won First Place at Tech-Master 2K25, a C Programming Competition held at Hirachand Nemchand College of Commerce, Solapur.',
+      year:        'Mar 2025',
+      icon:        'fa-solid fa-trophy',
+    },
+    {
+      title:       '🥇 Winner – CODEBATE 2k24',
+      description: 'Secured First Place at CODEBATE-2k24, organized by the Computer Science Department, Prin. K. P. Mangalvedhekar Institute of Management & Career Development and Research, Solapur.',
+      year:        'Oct 2024',
+      icon:        'fa-solid fa-code',
+    },
+    {
       title:       'Problem Solver',
       description: 'Solved 200+ coding problems on LeetCode and HackerRank.',
       year:        '2024',
-      icon:        'fa-solid fa-trophy',
+      icon:        'fa-solid fa-laptop-code',
     },
     {
       title:       'Open Source Contributor',
@@ -174,12 +192,19 @@ const portfolioData = {
       icon:        'fa-brands fa-aws',
     },
     {
+      title:       '🥉 1st Consolation – San Pratibha Shodh 2k24',
+      description: 'Awarded First Consolation Prize in the Web Page Designing Competition at San Pratibha Shodh 2k24, Sangameshwar College, Solapur (Autonomous).',
+      year:        'Jan 2024',
+      icon:        'fa-solid fa-globe',
+    },
+    {
       title:       'Academic Excellence',
       description: 'Consistently maintained top academic performance throughout engineering.',
       year:        '2023',
       icon:        'fa-solid fa-graduation-cap',
     },
   ],
+
 
   /* --- Resume --- */
   resume: {
