@@ -88,41 +88,80 @@ const portfolioData = {
   /* --- Projects --- */
   projects: [
     {
-      id:          'proj-001',
-      title:       'Project Alpha',
-      description: 'A scalable full-stack web application with cloud-native backend.',
-      features:    ['Feature A', 'Feature B', 'Feature C'],
-      techStack:   ['Java', 'Spring Boot', 'AWS', 'React'],
-      github:      'https://github.com/AbhishekKambleGit/project-alpha',
-      liveDemo:    '',
-      image:       'assets/images/projects/project-alpha.jpg',
+      id:          'proj-000',
+      title:       'SAMVED – Smart Governance Hackathon',
+      description: 'A full-stack hackathon management platform developed in collaboration with MIT Vishwaprayag University and Solapur Municipal Corporation. Features governance-based team registration and role-based workflows.',
+      features:    ['Role-based workflows (Students, Mentors, SPOCs, Judges, Admins)', 'Secure authentication system', 'Governance-based team registration', 'Real-time hackathon management'],
+      techStack:   ['React', 'TypeScript', 'Node.js', 'Express.js', 'MongoDB', 'Tailwind CSS'],
+      github:      '',
+      liveDemo:    'https://www.smc-mitvpuhackathon.in/',
+      image:       'assets/images/projects/samved.jpg',
       category:    'Full Stack',
       featured:    true,
       status:      'live',
     },
     {
-      id:          'proj-002',
-      title:       'Cloud Monitor',
-      description: 'AWS resource monitoring dashboard with real-time metrics.',
-      features:    ['Real-time metrics', 'Alert system', 'Cost tracking'],
-      techStack:   ['Python', 'AWS', 'JavaScript'],
-      github:      'https://github.com/AbhishekKambleGit/cloud-monitor',
+      id:          'proj-001',
+      title:       'Handwritten Digit Recognition',
+      description: 'Custom CNN built from scratch with TensorFlow/Keras, trained on MNIST to classify handwritten digits (0–9) with high accuracy. Includes image preprocessing, visualization, and prediction pipeline.',
+      features:    ['Custom CNN architecture', 'MNIST dataset training', 'Image preprocessing & visualization', 'High-accuracy prediction'],
+      techStack:   ['Python', 'TensorFlow', 'Keras', 'Jupyter Notebook', 'NumPy'],
+      github:      'https://github.com/AbhishekKambleGit/Handwritten_Digit_Recognition',
       liveDemo:    '',
-      image:       'assets/images/projects/cloud-monitor.jpg',
-      category:    'Cloud',
+      image:       'assets/images/projects/digit-recognition.jpg',
+      category:    'AI / ML',
       featured:    true,
-      status:      'wip',
+      status:      'live',
+    },
+    {
+      id:          'proj-002',
+      title:       'Integrated Pet Wellness',
+      description: 'A full-stack TypeScript application providing a comprehensive platform for pet health tracking, appointment scheduling, and wellness management for pet owners.',
+      features:    ['Pet health tracking', 'Appointment scheduling', 'Wellness management dashboard', 'Full-stack TypeScript'],
+      techStack:   ['TypeScript', 'React', 'Node.js', 'REST API'],
+      github:      'https://github.com/AbhishekKambleGit/Integrated-Pet-Wellness',
+      liveDemo:    '',
+      image:       'assets/images/projects/pet-wellness.jpg',
+      category:    'Full Stack',
+      featured:    true,
+      status:      'live',
     },
     {
       id:          'proj-003',
-      title:       'AutoScript',
-      description: 'Python-based automation toolkit for repetitive dev workflows.',
-      features:    ['Task scheduling', 'Report generation', 'API integration'],
-      techStack:   ['Python', 'Selenium', 'REST API'],
-      github:      'https://github.com/AbhishekKambleGit/autoscript',
+      title:       'AI Translator App',
+      description: 'An AI-powered multilingual translator application that leverages machine learning models to deliver fast, accurate real-time language translation across multiple languages.',
+      features:    ['Multilingual translation', 'AI-powered accuracy', 'Real-time processing', 'Multi-language support'],
+      techStack:   ['Python', 'AI/ML', 'NLP', 'REST API'],
+      github:      'https://github.com/AbhishekKambleGit/ai-translator-app',
       liveDemo:    '',
-      image:       'assets/images/projects/autoscript.jpg',
-      category:    'Automation',
+      image:       'assets/images/projects/ai-translator.jpg',
+      category:    'AI / ML',
+      featured:    true,
+      status:      'live',
+    },
+    {
+      id:          'proj-004',
+      title:       'Tattoo Billing System',
+      description: 'A streamlined billing and invoice management system built for tattoo studios, handling client bookings, service pricing, and automated receipt generation.',
+      features:    ['Client billing & invoicing', 'Service pricing management', 'Automated receipts', 'Studio management'],
+      techStack:   ['JavaScript', 'HTML5', 'CSS3', 'LocalStorage'],
+      github:      'https://github.com/AbhishekKambleGit/tattoo-billing-system',
+      liveDemo:    '',
+      image:       'assets/images/projects/tattoo-billing.jpg',
+      category:    'Web Dev',
+      featured:    false,
+      status:      'live',
+    },
+    {
+      id:          'proj-005',
+      title:       'Personal Portfolio Website',
+      description: 'My developer portfolio website showcasing projects, skills, certifications, and achievements. Built with vanilla HTML, CSS, and JavaScript featuring animations and a modern glassmorphism design.',
+      features:    ['Responsive design', 'Animated hero section', 'Dynamic project filtering', 'Glassmorphism UI'],
+      techStack:   ['HTML5', 'CSS3', 'JavaScript', 'AOS'],
+      github:      'https://github.com/AbhishekKambleGit/abhishekkamble',
+      liveDemo:    'https://abhishekkamblegit.github.io/abhishekkamble/',
+      image:       'assets/images/projects/portfolio.jpg',
+      category:    'Web Dev',
       featured:    false,
       status:      'live',
     },
@@ -633,9 +672,11 @@ window.filterProjects = function(category, btn) {
           ${proj.techStack.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
         </div>
         <div class="project-links">
-          <a href="${proj.github}" target="_blank" class="project-link">
-            <i class="fa-brands fa-github"></i> Source
-          </a>
+          ${proj.github ? `
+            <a href="${proj.github}" target="_blank" class="project-link">
+              <i class="fa-brands fa-github"></i> Source
+            </a>
+          ` : ''}
           ${proj.liveDemo ? `
             <a href="${proj.liveDemo}" target="_blank" class="project-link">
               <i class="fa-solid fa-arrow-up-right-from-square"></i> Demo
