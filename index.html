@@ -67,6 +67,7 @@
         <ul id="nav-links" class="hidden md:flex items-center gap-6 font-body text-sm font-medium" role="list">
           <li><a href="#about"          class="nav-link" aria-label="About section">About</a></li>
           <li><a href="#skills"         class="nav-link" aria-label="Skills section">Skills</a></li>
+          <li><a href="#education"      class="nav-link" aria-label="Education section">Education</a></li>
           <li><a href="#services"       class="nav-link" aria-label="Services section">Services</a></li>
           <li><a href="#projects"       class="nav-link" aria-label="Projects section">Projects</a></li>
           <li><a href="#certifications" class="nav-link" aria-label="Certifications section">Certifications</a></li>
@@ -87,6 +88,7 @@
         <ul class="flex flex-col gap-3 font-body text-sm font-medium" role="list">
           <li><a href="#about"          class="nav-link block" aria-label="About">About</a></li>
           <li><a href="#skills"         class="nav-link block" aria-label="Skills">Skills</a></li>
+          <li><a href="#education"      class="nav-link block" aria-label="Education">Education</a></li>
           <li><a href="#services"       class="nav-link block" aria-label="Services">Services</a></li>
           <li><a href="#projects"       class="nav-link block" aria-label="Projects">Projects</a></li>
           <li><a href="#certifications" class="nav-link block" aria-label="Certifications">Certifications</a></li>
@@ -494,6 +496,49 @@
       <div id="skills-grid"   class="grid-auto-fill" data-aos="fade-up" data-aos-delay="150" role="tabpanel"></div>
     </div>
   </section>
+
+  <!-- ============================================================
+       EDUCATION JOURNEY SECTION
+  ============================================================ -->
+  <section id="education" class="edu-journey-section" aria-label="Education Journey">
+    <!-- Scroll zone provides 380vh so sticky stage animates across 280vh of scroll -->
+    <div class="edu-scroll-zone" id="edu-scroll-zone">
+      <div class="edu-sticky-stage" id="edu-sticky-stage">
+
+        <!-- Section header (inside sticky stage) -->
+        <div class="container-main edu-header-inner">
+          <div class="section-header">
+            <span class="section-tag">My Academic Path</span>
+            <h2 class="section-title">Education <span class="text-gradient">Journey</span></h2>
+            <p class="section-subtitle">Each coach carries a chapter of my academic growth</p>
+          </div>
+          <div class="edu-journey-progress-track">
+            <div class="edu-journey-progress-fill" id="edu-journey-progress-fill"></div>
+          </div>
+          <p class="edu-scroll-hint" id="edu-scroll-hint" aria-hidden="true">
+            <i class="fa-solid fa-chevron-down"></i>&nbsp;Scroll to travel through my journey
+          </p>
+        </div>
+
+        <!-- Railway scene: track + moving train -->
+        <div class="edu-railway-scene" id="edu-railway-scene">
+
+          <!-- Track (always full width) -->
+          <div class="edu-track-layer" aria-hidden="true">
+            <div class="edu-rail edu-rail--top"></div>
+            <div class="edu-rail edu-rail--bottom"></div>
+          </div>
+
+          <!-- Train belt: this element translates on scroll -->
+          <div class="edu-train-belt" id="edu-train-belt" aria-label="Education journey as a train">
+            <!-- Engine + Couplers + Coaches injected by initEducationJourney() -->
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
 
   <!-- ============================================================
        SERVICES SECTION
