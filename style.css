@@ -2244,29 +2244,135 @@ textarea.form-input-premium {
 }
 
 /* ── Calendar overrides (match dark theme) ── */
+/* ── Calendar container ── */
 .gh-calendar-wrap {
   overflow-x: auto;
-  padding: 0.25rem 0;
+  padding: 0.5rem 0 0;
+  border-radius: 12px;
 }
 
-/* Override the library's default light colors */
-.gh-calendar-wrap .contrib-legend,
+/* ─────────────────────────────────────────────────────────────
+   NUKE the library's default light background & borders
+   Target every possible element the lib may render
+───────────────────────────────────────────────────────────── */
+.gh-calendar-wrap *,
+.gh-calendar-wrap .calendar,
+.gh-calendar-wrap .calendar *,
+.calendar,
+.calendar * {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Table layout (older lib versions render a <table>) */
+.gh-calendar-wrap table,
+.gh-calendar-wrap thead,
+.gh-calendar-wrap tbody,
+.gh-calendar-wrap tr,
+.gh-calendar-wrap td,
+.gh-calendar-wrap th,
+.calendar table,
+.calendar thead,
+.calendar tbody,
+.calendar tr,
+.calendar td,
+.calendar th {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* SVG container fill */
+.gh-calendar-wrap svg,
+.calendar svg {
+  background: transparent !important;
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+  overflow: visible;
+}
+
+/* All text inside calendar */
 .gh-calendar-wrap text,
-.gh-calendar-wrap .contrib-number {
-  fill: var(--color-text-muted) !important;
-  color: var(--color-text-muted) !important;
+.gh-calendar-wrap tspan,
+.gh-calendar-wrap .contrib-number,
+.gh-calendar-wrap .contrib-legend,
+.gh-calendar-wrap .contrib-legend span,
+.calendar text,
+.calendar tspan,
+.calendar .contrib-number,
+.calendar .contrib-legend,
+.calendar .contrib-legend span {
+  fill: rgba(160,140,220,0.75) !important;
+  color: rgba(160,140,220,0.75) !important;
   font-family: var(--font-body) !important;
-  font-size: 0.72rem !important;
+  font-size: 11px !important;
 }
-.gh-calendar-wrap svg rect.contrib-column-label {
-  fill: var(--color-text-muted) !important;
+
+/* "X contributions in the last year" summary line */
+.gh-calendar-wrap .contrib-number,
+.calendar .contrib-number {
+  color: var(--color-text) !important;
+  font-size: 0.82rem !important;
+  font-weight: 600 !important;
 }
-/* Level colors → purple/cyan palette */
-.gh-calendar-wrap .ContributionCalendar-day[data-level="0"] { fill: rgba(255,255,255,0.04) !important; }
-.gh-calendar-wrap .ContributionCalendar-day[data-level="1"] { fill: rgba(139,92,246,0.25) !important; }
-.gh-calendar-wrap .ContributionCalendar-day[data-level="2"] { fill: rgba(139,92,246,0.48) !important; }
-.gh-calendar-wrap .ContributionCalendar-day[data-level="3"] { fill: rgba(139,92,246,0.72) !important; }
-.gh-calendar-wrap .ContributionCalendar-day[data-level="4"] { fill: rgba(139,92,246,1)    !important; box-shadow: 0 0 6px rgba(139,92,246,0.7); }
+
+/* ─────────────────────────────────────────────────────────────
+   Contribution day colors — purple → cyan palette
+───────────────────────────────────────────────────────────── */
+
+/* Default empty day */
+.gh-calendar-wrap rect[data-level="0"],
+.gh-calendar-wrap .ContributionCalendar-day[data-level="0"],
+.calendar rect[data-level="0"] {
+  fill: rgba(255,255,255,0.06) !important;
+  rx: 3;
+}
+
+/* Level 1 – faint purple */
+.gh-calendar-wrap rect[data-level="1"],
+.gh-calendar-wrap .ContributionCalendar-day[data-level="1"],
+.calendar rect[data-level="1"] {
+  fill: rgba(139,92,246,0.30) !important;
+}
+
+/* Level 2 */
+.gh-calendar-wrap rect[data-level="2"],
+.gh-calendar-wrap .ContributionCalendar-day[data-level="2"],
+.calendar rect[data-level="2"] {
+  fill: rgba(139,92,246,0.55) !important;
+}
+
+/* Level 3 */
+.gh-calendar-wrap rect[data-level="3"],
+.gh-calendar-wrap .ContributionCalendar-day[data-level="3"],
+.calendar rect[data-level="3"] {
+  fill: rgba(139,92,246,0.80) !important;
+}
+
+/* Level 4 – full purple glow */
+.gh-calendar-wrap rect[data-level="4"],
+.gh-calendar-wrap .ContributionCalendar-day[data-level="4"],
+.calendar rect[data-level="4"] {
+  fill: #8b5cf6 !important;
+  filter: drop-shadow(0 0 4px rgba(139,92,246,0.8));
+}
+
+/* Legend squares */
+.gh-calendar-wrap .contrib-legend li,
+.calendar .contrib-legend li {
+  background-color: transparent !important;
+}
+
+/* ── Responsive: fill full card width on desktop ── */
+.gh-calendar-wrap .calendar-graph,
+.gh-calendar-wrap .js-calendar-graph,
+.calendar .calendar-graph,
+.calendar .js-calendar-graph {
+  width: 100% !important;
+}
+
+
 
 /* ── Error state ── */
 .gh-error {
