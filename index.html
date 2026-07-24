@@ -25,6 +25,9 @@
   <!-- AOS Animation Library -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" crossorigin="anonymous" />
 
+  <!-- GitHub Calendar -->
+  <link rel="stylesheet" href="https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css" />
+
   <!-- Custom Styles -->
   <link rel="stylesheet" href="style.css" />
 
@@ -72,6 +75,7 @@
           <li><a href="#projects"       class="nav-link" aria-label="Projects section">Projects</a></li>
           <li><a href="#certifications" class="nav-link" aria-label="Certifications section">Certifications</a></li>
           <li><a href="#achievements"   class="nav-link" aria-label="Achievements section">Achievements</a></li>
+          <li><a href="#github"         class="nav-link" aria-label="GitHub section">GitHub</a></li>
           <li><a href="#contact"        class="btn-primary text-xs px-4 py-2" aria-label="Contact section">Contact</a></li>
         </ul>
 
@@ -93,7 +97,7 @@
           <li><a href="#projects"       class="nav-link block" aria-label="Projects">Projects</a></li>
           <li><a href="#certifications" class="nav-link block" aria-label="Certifications">Certifications</a></li>
           <li><a href="#achievements"   class="nav-link block" aria-label="Achievements">Achievements</a></li>
-          <li><a href="#resume"         class="nav-link block" aria-label="Resume">Resume</a></li>
+          <li><a href="#github"         class="nav-link block" aria-label="GitHub">GitHub</a></li>
           <li><a href="#contact"        class="btn-primary block text-center" aria-label="Contact">Contact</a></li>
         </ul>
       </div>
@@ -618,6 +622,72 @@
   </section>
 
   <!-- ============================================================
+       GITHUB CONTRIBUTIONS SECTION
+  ============================================================ -->
+  <section id="github" class="section-pad gh-section" aria-label="GitHub Contributions">
+    <div class="container-main">
+
+      <!-- Section header -->
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">Open Source Activity</span>
+        <h2 class="section-title">GitHub <span class="text-gradient">Contributions</span></h2>
+        <p class="section-subtitle">My coding consistency and open-source activity</p>
+      </div>
+
+      <!-- Calendar card -->
+      <div class="gh-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="gh-card-header">
+          <div class="gh-card-icon" aria-hidden="true">
+            <i class="fa-brands fa-github"></i>
+          </div>
+          <div>
+            <h3 class="gh-card-title">GitHub Contributions</h3>
+            <p class="gh-card-desc">Every square represents my daily coding activity and contributions on GitHub.</p>
+          </div>
+        </div>
+
+        <!-- Loading skeleton -->
+        <div class="gh-skeleton" id="gh-skeleton" aria-label="Loading contribution graph" aria-live="polite">
+          <div class="gh-skel-row"></div>
+          <div class="gh-skel-row"></div>
+          <div class="gh-skel-row"></div>
+        </div>
+
+        <!-- GitHub Calendar target -->
+        <div class="calendar gh-calendar-wrap" id="gh-calendar-wrap" style="display:none"></div>
+
+        <!-- Error state -->
+        <div class="gh-error" id="gh-error" style="display:none" role="alert">
+          <i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i>
+          <span>Could not load contribution data. <a href="https://github.com/AbhishekKambleGit" target="_blank" rel="noopener">View on GitHub →</a></span>
+        </div>
+      </div>
+
+      <!-- GitHub Stats row -->
+      <div class="gh-stats-grid" id="gh-stats-grid" data-aos="fade-up" data-aos-delay="200">
+        <!-- Injected by initGitHubSection() in script.js -->
+        <div class="gh-stat-skeleton"></div>
+        <div class="gh-stat-skeleton"></div>
+        <div class="gh-stat-skeleton"></div>
+        <div class="gh-stat-skeleton"></div>
+      </div>
+
+      <!-- View Profile button -->
+      <div class="gh-cta" data-aos="fade-up" data-aos-delay="300">
+        <a href="https://github.com/AbhishekKambleGit"
+           target="_blank" rel="noopener noreferrer"
+           class="gh-profile-btn" id="gh-profile-btn"
+           aria-label="View Abhishek Kamble's GitHub profile">
+          <i class="fa-brands fa-github" aria-hidden="true"></i>
+          View GitHub Profile
+          <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
        CONTACT SECTION
   ============================================================ -->
   <section id="contact" class="section-pad section-alt" aria-label="Contact">
@@ -650,6 +720,8 @@
 
   <!-- AOS JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" crossorigin="anonymous"></script>
+  <!-- GitHub Calendar JS -->
+  <script src="https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js"></script>
   <!-- Portfolio Data -->
   <script src="script.js"></script>
 </body>

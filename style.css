@@ -2130,6 +2130,298 @@ textarea.form-input-premium {
 
 
 /* ================================================================
+   GITHUB CONTRIBUTIONS SECTION
+================================================================ */
+
+.gh-section {
+  background: var(--color-bg);
+  position: relative;
+}
+.gh-section::before {
+  content: '';
+  position: absolute;
+  top: 10%; left: 50%;
+  transform: translateX(-50%);
+  width: 600px; height: 400px;
+  background: radial-gradient(ellipse, rgba(139,92,246,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── Main calendar glass card ── */
+.gh-card {
+  background: linear-gradient(135deg,
+    rgba(20,12,54,0.92) 0%,
+    rgba(9,5,28,0.96)   50%,
+    rgba(20,12,54,0.90) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(139,92,246,0.22);
+  border-radius: 24px;
+  padding: 2rem 2.5rem 2.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+.gh-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent), var(--color-primary));
+  border-radius: 24px 24px 0 0;
+}
+.gh-card::after {
+  content: '';
+  position: absolute;
+  top: -60%; left: -20%; right: -20%;
+  height: 60%;
+  background: radial-gradient(ellipse, rgba(139,92,246,0.045) 0%, transparent 70%);
+  pointer-events: none;
+}
+.gh-card:hover {
+  border-color: rgba(139,92,246,0.42);
+  box-shadow: 0 0 50px rgba(139,92,246,0.12), 0 20px 60px rgba(0,0,0,0.35);
+}
+
+/* Card header row */
+.gh-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+.gh-card-icon {
+  width: 46px; height: 46px;
+  border-radius: 12px;
+  background: var(--color-primary-dim);
+  border: 1px solid rgba(139,92,246,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: var(--color-primary);
+  flex-shrink: 0;
+  box-shadow: 0 0 16px rgba(139,92,246,0.2);
+}
+.gh-card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  margin-bottom: 0.2rem;
+}
+.gh-card-desc {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ── Skeleton loader ── */
+.gh-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0.5rem 0;
+}
+.gh-skel-row {
+  height: 14px;
+  border-radius: 6px;
+  background: linear-gradient(90deg,
+    rgba(255,255,255,0.04) 25%,
+    rgba(255,255,255,0.09) 50%,
+    rgba(255,255,255,0.04) 75%);
+  background-size: 200% 100%;
+  animation: gh-shimmer 1.6s ease-in-out infinite;
+}
+.gh-skel-row:nth-child(1) { width: 100%; animation-delay: 0s;    }
+.gh-skel-row:nth-child(2) { width: 85%;  animation-delay: 0.2s;  }
+.gh-skel-row:nth-child(3) { width: 65%;  animation-delay: 0.4s;  }
+
+@keyframes gh-shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ── Calendar overrides (match dark theme) ── */
+.gh-calendar-wrap {
+  overflow-x: auto;
+  padding: 0.25rem 0;
+}
+
+/* Override the library's default light colors */
+.gh-calendar-wrap .contrib-legend,
+.gh-calendar-wrap text,
+.gh-calendar-wrap .contrib-number {
+  fill: var(--color-text-muted) !important;
+  color: var(--color-text-muted) !important;
+  font-family: var(--font-body) !important;
+  font-size: 0.72rem !important;
+}
+.gh-calendar-wrap svg rect.contrib-column-label {
+  fill: var(--color-text-muted) !important;
+}
+/* Level colors → purple/cyan palette */
+.gh-calendar-wrap .ContributionCalendar-day[data-level="0"] { fill: rgba(255,255,255,0.04) !important; }
+.gh-calendar-wrap .ContributionCalendar-day[data-level="1"] { fill: rgba(139,92,246,0.25) !important; }
+.gh-calendar-wrap .ContributionCalendar-day[data-level="2"] { fill: rgba(139,92,246,0.48) !important; }
+.gh-calendar-wrap .ContributionCalendar-day[data-level="3"] { fill: rgba(139,92,246,0.72) !important; }
+.gh-calendar-wrap .ContributionCalendar-day[data-level="4"] { fill: rgba(139,92,246,1)    !important; box-shadow: 0 0 6px rgba(139,92,246,0.7); }
+
+/* ── Error state ── */
+.gh-error {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  background: rgba(239,68,68,0.07);
+  border: 1px solid rgba(239,68,68,0.22);
+  color: rgba(239,68,68,0.85);
+  font-size: 0.82rem;
+}
+.gh-error a {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+/* ── Stats grid ── */
+.gh-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+/* Stat card */
+.gh-stat-card {
+  background: linear-gradient(145deg,
+    rgba(20,12,54,0.88) 0%,
+    rgba(9,5,28,0.94)   100%);
+  border: 1px solid rgba(139,92,246,0.2);
+  border-radius: 16px;
+  padding: 1.25rem 1rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.32s cubic-bezier(0.34,1.56,0.64,1),
+              border-color 0.32s ease,
+              box-shadow 0.32s ease;
+  cursor: default;
+}
+.gh-stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  opacity: 0;
+  transition: opacity 0.32s ease;
+}
+.gh-stat-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(139,92,246,0.5);
+  box-shadow: 0 12px 35px rgba(139,92,246,0.18), 0 0 0 1px rgba(139,92,246,0.1);
+}
+.gh-stat-card:hover::before { opacity: 1; }
+
+.gh-stat-icon {
+  font-size: 1.2rem;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+  display: block;
+  transition: color 0.32s ease;
+}
+.gh-stat-card:hover .gh-stat-icon { color: var(--color-accent); }
+
+.gh-stat-value {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  line-height: 1.1;
+  margin-bottom: 0.25rem;
+}
+.gh-stat-label {
+  font-size: 0.67rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+}
+
+/* Skeleton stat cards */
+.gh-stat-skeleton {
+  height: 108px;
+  border-radius: 16px;
+  background: linear-gradient(90deg,
+    rgba(255,255,255,0.03) 25%,
+    rgba(255,255,255,0.07) 50%,
+    rgba(255,255,255,0.03) 75%);
+  background-size: 200% 100%;
+  animation: gh-shimmer 1.6s ease-in-out infinite;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+.gh-stat-skeleton:nth-child(2) { animation-delay: 0.15s; }
+.gh-stat-skeleton:nth-child(3) { animation-delay: 0.3s;  }
+.gh-stat-skeleton:nth-child(4) { animation-delay: 0.45s; }
+
+/* ── CTA Button ── */
+.gh-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.25rem;
+}
+.gh-profile-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.8rem 2rem;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--color-primary), #6d28d9);
+  color: #fff;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  font-family: var(--font-heading);
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1),
+              box-shadow 0.28s ease;
+  box-shadow: 0 4px 24px rgba(139,92,246,0.35);
+}
+.gh-profile-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.12), transparent);
+  opacity: 0;
+  transition: opacity 0.28s ease;
+}
+.gh-profile-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 40px rgba(139,92,246,0.55), 0 0 0 1px rgba(139,92,246,0.4);
+}
+.gh-profile-btn:hover::before { opacity: 1; }
+.gh-profile-btn:active { transform: translateY(0) scale(0.98); }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .gh-stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .gh-card { padding: 1.25rem; }
+  .gh-card-header { flex-direction: column; gap: 0.75rem; }
+  .gh-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+  .gh-stat-value  { font-size: 1.3rem; }
+}
+@media (max-width: 400px) {
+  .gh-stats-grid { grid-template-columns: 1fr 1fr; }
+}
+
+
+/* ================================================================
    EDUCATION JOURNEY v2 — FUTURISTIC TRAIN TIMELINE
    "Each coach IS the milestone"
 ================================================================ */

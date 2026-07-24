@@ -336,6 +336,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderContact();
   renderFooter();
   initEducationJourney();
+  initGitHubSection();
   
   // Initialize AOS last
   setTimeout(() => {
@@ -900,7 +901,118 @@ window.portfolioData = portfolioData;
 
 
 /* ---------------------------------------------------------------
-   18. EDUCATION JOURNEY – TRAIN TIMELINE v2 (Coach = Milestone)
+   18. GITHUB CONTRIBUTIONS SECTION
+--------------------------------------------------------------- */
+function initGitHubSection() {
+  const USERNAME    = 'AbhishekKambleGit';
+  const skeleton    = document.getElementById('gh-skeleton');
+  const calendarWrap = document.getElementById('gh-calendar-wrap');
+  const errorEl     = document.getElementById('gh-error');
+  const statsGrid   = document.getElementById('gh-stats-grid');
+
+  /* ── 1. GitHub Calendar ── */
+  if (typeof GitHubCalendar !== 'undefined' && calendarWrap) {
+    try {
+      GitHubCalendar('.calendar', USERNAME, {
+        responsive : true,
+        tooltips   : true,
+        global_stats: false
+      });
+      /* Poll until the calendar SVG is injected, then swap skeleton → calendar */
+      const poll = setInterval(() => {
+        if (calendarWrap.querySelector('svg') || calendarWrap.querySelector('table')) {
+          clearInterval(poll);
+          if (skeleton)     skeleton.style.display     = 'none';
+          calendarWrap.style.display = 'block';
+        }
+      }, 300);
+      /* Safety timeout – if nothing after 10s, show error */
+      setTimeout(() => {
+        clearInterval(poll);
+        if (calendarWrap.style.display === 'none') {
+          if (skeleton) skeleton.style.display = 'none';
+          if (errorEl)  errorEl.style.display  = 'flex';
+        }
+      }, 10000);
+    } catch (e) {
+      if (skeleton) skeleton.style.display = 'none';
+      if (errorEl)  errorEl.style.display  = 'flex';
+    }
+  } else {
+    /* Library not loaded yet — try again after 2s */
+    setTimeout(() => {
+      if (typeof GitHubCalendar !== 'undefined') initGitHubSection();
+      else {
+        if (skeleton) skeleton.style.display = 'none';
+        if (errorEl)  errorEl.style.display  = 'flex';
+      }
+    }, 2000);
+  }
+
+  /* ── 2. GitHub REST API – profile stats ── */
+  if (!statsGrid) return;
+
+  fetch(`https://api.github.com/users/${USERNAME}`, {
+    headers: { Accept: 'application/vnd.github.v3+json' }
+  })
+    .then(r => {
+      if (!r.ok) throw new Error('GitHub API error');
+      return r.json();
+    })
+    .then(data => {
+      const joined = data.created_at
+        ? new Date(data.created_at).getFullYear()
+        : '—';
+
+      const stats = [
+        { icon: 'fa-solid fa-code-branch',   label: 'Public Repos',   value: data.public_repos  ?? 0 },
+        { icon: 'fa-solid fa-users',          label: 'Followers',      value: data.followers      ?? 0 },
+        { icon: 'fa-solid fa-user-plus',      label: 'Following',      value: data.following      ?? 0 },
+        { icon: 'fa-solid fa-calendar-check', label: 'Member Since',   value: joined, noCount: true },
+      ];
+
+      statsGrid.innerHTML = stats.map(s => `
+        <div class="gh-stat-card">
+          <i class="${s.icon} gh-stat-icon" aria-hidden="true"></i>
+          <div class="gh-stat-value" data-target="${s.noCount ? '' : s.value}">${s.noCount ? s.value : '0'}</div>
+          <div class="gh-stat-label">${s.label}</div>
+        </div>`).join('');
+
+      /* Count-up animation */
+      statsGrid.querySelectorAll('.gh-stat-value[data-target]').forEach(el => {
+        const target = parseInt(el.dataset.target, 10);
+        if (isNaN(target) || target === 0) return;
+        const duration = 1200;
+        const step     = 16;
+        const steps    = Math.ceil(duration / step);
+        const inc      = Math.ceil(target / steps);
+        let current    = 0;
+        const timer    = setInterval(() => {
+          current = Math.min(current + inc, target);
+          el.textContent = current.toLocaleString();
+          if (current >= target) clearInterval(timer);
+        }, step);
+      });
+    })
+    .catch(() => {
+      /* Graceful degradation — show placeholder cards */
+      statsGrid.innerHTML = [
+        { icon: 'fa-solid fa-code-branch',   label: 'Public Repos' },
+        { icon: 'fa-solid fa-users',          label: 'Followers'    },
+        { icon: 'fa-solid fa-user-plus',      label: 'Following'    },
+        { icon: 'fa-solid fa-calendar-check', label: 'Member Since' },
+      ].map(s => `
+        <div class="gh-stat-card">
+          <i class="${s.icon} gh-stat-icon" aria-hidden="true"></i>
+          <div class="gh-stat-value">—</div>
+          <div class="gh-stat-label">${s.label}</div>
+        </div>`).join('');
+    });
+}
+
+
+/* ---------------------------------------------------------------
+   19. EDUCATION JOURNEY – TRAIN TIMELINE v2 (Coach = Milestone)
 --------------------------------------------------------------- */
 function initEducationJourney() {
   const belt = document.getElementById('edu-train-belt');
