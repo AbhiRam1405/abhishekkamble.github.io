@@ -202,7 +202,7 @@ const portfolioData = {
     },
     {
       title:       '🥇 Winner – Tech-Master 2K25',
-      description: 'Won First Place at Tech-Master 2K25, a C Programming Competition held at Hirachand Nemchand College of Commerce, Solapur.',
+      description: 'Won First Place at Tech-Master 2K25, 5th District Level Inter-Collegiate C-Programming Competition (BCA Section), organized by Hirachand Nemchand College of Commerce, Solapur.',
       year:        'Mar 2025',
       icon:        'fa-solid fa-trophy',
     },
@@ -231,8 +231,8 @@ const portfolioData = {
       icon:        'fa-brands fa-aws',
     },
     {
-      title:       '🥉 1st Consolation – San Pratibha Shodh 2k24',
-      description: 'Awarded First Consolation Prize in the Web Page Designing Competition at San Pratibha Shodh 2k24, Sangameshwar College, Solapur (Autonomous).',
+      title:       '🌐 Participant – San Pratibha Shodh 2k24',
+      description: 'Participated in the District Level Inter-Collegiate Web Page Designing Competition at San Pratibha Shodh 2k24, organized by Sangameshwar College (Autonomous), Solapur.',
       year:        'Jan 2024',
       icon:        'fa-solid fa-globe',
     },
