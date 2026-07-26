@@ -199,18 +199,21 @@ const portfolioData = {
       description: 'Secured Second Prize at the National Level Programming Competition – Dexter InnoFest 2024–25 (Genius Ideas), organized by the Dept. of CS & CA, Punyashlok Ahilyadevi Holkar Solapur University.',
       year:        'Mar 2025',
       icon:        'fa-solid fa-medal',
+      image:       'images/achievements/dexter-innofest.jpg',
     },
     {
       title:       '🥇 Winner – Tech-Master 2K25',
       description: 'Won First Place at Tech-Master 2K25, 5th District Level Inter-Collegiate C-Programming Competition (BCA Section), organized by Hirachand Nemchand College of Commerce, Solapur.',
       year:        'Mar 2025',
       icon:        'fa-solid fa-trophy',
+      image:       'images/achievements/tech-master.jpg',
     },
     {
       title:       '🥇 Winner – CODEBATE 2k24',
       description: 'Secured First Place at CODEBATE-2k24, organized by the Computer Science Department, Prin. K. P. Mangalvedhekar Institute of Management & Career Development and Research, Solapur.',
       year:        'Oct 2024',
       icon:        'fa-solid fa-code',
+      image:       'images/achievements/codebate.jpg',
     },
     {
       title:       'Problem Solver',
@@ -235,6 +238,7 @@ const portfolioData = {
       description: 'Participated in the District Level Inter-Collegiate Web Page Designing Competition at San Pratibha Shodh 2k24, organized by Sangameshwar College (Autonomous), Solapur.',
       year:        'Jan 2024',
       icon:        'fa-solid fa-globe',
+      image:       'images/achievements/san-pratibha-shodh.jpg',
     },
     {
       title:       'Academic Excellence',
@@ -777,6 +781,15 @@ function renderAchievements() {
 
   container.innerHTML = portfolioData.achievements.map(ach => `
     <div class="achievement-card-premium glass-card-hover" data-aos="fade-up">
+      ${ach.image ? `
+      <div class="achievement-cert-thumb" onclick="openCertLightbox('${ach.image}', '${ach.title.replace(/'/g, "\\'")}')"
+           role="button" tabindex="0" aria-label="View certificate for ${ach.title.replace(/'/g, '')}">
+        <img src="${ach.image}" alt="${ach.title} certificate" loading="lazy" />
+        <div class="achievement-cert-overlay">
+          <i class="fa-solid fa-expand"></i>
+          <span>View Certificate</span>
+        </div>
+      </div>` : ''}
       <div class="achievement-icon-box">
         <i class="${ach.icon}"></i>
       </div>
@@ -785,6 +798,24 @@ function renderAchievements() {
       <p class="achievement-desc-premium">${ach.description}</p>
     </div>
   `).join('');
+
+  /* ── Certificate Lightbox (injected once) ── */
+  if (!document.getElementById('cert-lightbox')) {
+    const lb = document.createElement('div');
+    lb.id = 'cert-lightbox';
+    lb.className = 'cert-lightbox';
+    lb.innerHTML = `
+      <div class="cert-lightbox-backdrop" onclick="closeCertLightbox()"></div>
+      <div class="cert-lightbox-content">
+        <button class="cert-lightbox-close" onclick="closeCertLightbox()" aria-label="Close">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <img id="cert-lightbox-img" src="" alt="" />
+        <p id="cert-lightbox-title" class="cert-lightbox-caption"></p>
+      </div>
+    `;
+    document.body.appendChild(lb);
+  }
 }
 
 
@@ -898,6 +929,27 @@ function renderFooter() {
    17. EXPOSE DATA GLOBALLY (for section scripts)
 --------------------------------------------------------------- */
 window.portfolioData = portfolioData;
+
+
+/* ---------------------------------------------------------------
+   CERTIFICATE LIGHTBOX HELPERS
+--------------------------------------------------------------- */
+function openCertLightbox(src, title) {
+  const lb = document.getElementById('cert-lightbox');
+  if (!lb) return;
+  document.getElementById('cert-lightbox-img').src = src;
+  document.getElementById('cert-lightbox-img').alt = title;
+  document.getElementById('cert-lightbox-title').textContent = title;
+  lb.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeCertLightbox() {
+  const lb = document.getElementById('cert-lightbox');
+  if (!lb) return;
+  lb.classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCertLightbox(); });
 
 
 /* ---------------------------------------------------------------
