@@ -169,27 +169,46 @@ const portfolioData = {
 
   /* --- Certifications --- */
   certifications: [
-    {
-      title:    'AWS Cloud Practitioner',
-      provider: 'Amazon Web Services',
-      date:     '2024',
-      link:     '',
-      image:    'assets/images/certs/aws-cert.jpg',
-    },
-    {
-      title:    'Full Stack Java Development',
-      provider: 'Infosys Springboard',
-      date:     '2024',
-      link:     '',
-      image:    'assets/images/certs/infosys-cert.jpg',
-    },
-    {
-      title:    'Cloud Computing Fundamentals',
-      provider: 'Infosys Springboard',
-      date:     '2023',
-      link:     '',
-      image:    'assets/images/certs/cloud-cert.jpg',
-    },
+    // ── Coursera – Machine Learning ──
+    { title: 'IBM Introduction to Machine Learning',           provider: 'Coursera / IBM',    category: 'Machine Learning', date: '2024', icon: 'fa-solid fa-robot',          pdf: 'certificate/Coursera/ML/IBM Introduction to ML.pdf' },
+    { title: 'Exploratory Data Analysis for ML',              provider: 'Coursera / IBM',    category: 'Machine Learning', date: '2024', icon: 'fa-solid fa-magnifying-glass-chart', pdf: 'certificate/Coursera/ML/Exploratory Data Analysis for Machine Learning.pdf' },
+    { title: 'Supervised ML: Regression',                     provider: 'Coursera / IBM',    category: 'Machine Learning', date: '2024', icon: 'fa-solid fa-chart-line',      pdf: 'certificate/Coursera/ML/Supervised Machine Learning Regression.pdf' },
+    { title: 'Supervised ML: Classification',                 provider: 'Coursera / IBM',    category: 'Machine Learning', date: '2024', icon: 'fa-solid fa-diagram-project', pdf: 'certificate/Coursera/ML/Supervised Machine Learning Classification.pdf' },
+    { title: 'Unsupervised Machine Learning',                 provider: 'Coursera / IBM',    category: 'Machine Learning', date: '2024', icon: 'fa-solid fa-sitemap',         pdf: 'certificate/Coursera/ML/Unsupervised_Learning_Proper_Report.pdf' },
+    // ── Coursera – Statistics & Math ──
+    { title: 'Basics of Statistics',                          provider: 'Coursera',          category: 'Statistics & Math', date: '2024', icon: 'fa-solid fa-chart-bar',      pdf: 'certificate/Coursera/Stat/SCFP125072 Basics of Statistic.pdf' },
+    { title: 'Statistics for Data Science with Python',       provider: 'Coursera / IBM',    category: 'Statistics & Math', date: '2024', icon: 'fa-brands fa-python',        pdf: 'certificate/Coursera/Stat/SCFP125072 Statistics for Data Science with Python.pdf' },
+    { title: 'Linear Algebra: Linear Systems & Matrix Eq.',   provider: 'Coursera',          category: 'Statistics & Math', date: '2024', icon: 'fa-solid fa-square-root-variable', pdf: 'certificate/Coursera/Stat/SCFP125072 Linear Algebra Linear Systems and Matrix Equations.pdf' },
+    { title: 'Linear Algebra: Matrix Algebra & Eigenvectors', provider: 'Coursera',          category: 'Statistics & Math', date: '2024', icon: 'fa-solid fa-infinity',       pdf: 'certificate/Coursera/Stat/SCFP125072 Linear Algebra Matrix Algebra, Determinants, & Eigenvectors.pdf' },
+    { title: 'Linear Algebra: Orthogonality & Diagonalization',provider: 'Coursera',         category: 'Statistics & Math', date: '2024', icon: 'fa-solid fa-calculator',     pdf: 'certificate/Coursera/Stat/SCFP125072 Linear Algebra Orthogonality and Diagonalization.pdf' },
+    { title: 'Linear Algebra from Elementary to Advanced',    provider: 'Coursera',          category: 'Statistics & Math', date: '2024', icon: 'fa-solid fa-superscript',    pdf: 'certificate/Coursera/Stat/SCFP125072 Linear Algebra from Elementary to Advanced.pdf' },
+    // ── Coursera – Data Science ──
+    { title: 'What is Data Science',                          provider: 'Coursera / IBM',    category: 'Data Science', date: '2024', icon: 'fa-solid fa-database',           pdf: 'certificate/Coursera/sem 2/Data Science/What is Data Science.pdf' },
+    { title: 'Tools for Data Science',                        provider: 'Coursera / IBM',    category: 'Data Science', date: '2024', icon: 'fa-solid fa-wrench',             pdf: 'certificate/Coursera/sem 2/Data Science/Tools for Data Science.pdf' },
+    { title: 'Data Science Methodology',                      provider: 'Coursera / IBM',    category: 'Data Science', date: '2024', icon: 'fa-solid fa-microscope',        pdf: 'certificate/Coursera/sem 2/Data Science/Data Science Methodology.pdf' },
+    { title: 'IBM Data Science Professional',                 provider: 'Coursera / IBM',    category: 'Data Science', date: '2024', icon: 'fa-solid fa-award',              pdf: 'certificate/Coursera/sem 2/Data Science/IBM Data Science.pdf' },
+    { title: 'Python for Everybody – Crash Course',           provider: 'Coursera',          category: 'Data Science', date: '2024', icon: 'fa-brands fa-python',            pdf: 'certificate/Coursera/Coursera Python crash course.pdf' },
+    { title: 'Coursera Verified Certificate',                 provider: 'Coursera',          category: 'Data Science', date: '2024', icon: 'fa-solid fa-certificate',        pdf: 'certificate/Coursera/Coursera F46E7CYUVR99.pdf' },
+    // ── Infosys Springboard ──
+    { title: 'Java Foundation Certification',                 provider: 'Infosys Springboard', category: 'Infosys Springboard', date: '2024', icon: 'fa-brands fa-java',     pdf: 'certificate/Infosys Sprinboard/Java Foundation Certication.pdf' },
+    { title: 'Programming using Java',                        provider: 'Infosys Springboard', category: 'Infosys Springboard', date: '2024', icon: 'fa-brands fa-java',     pdf: 'certificate/Infosys Sprinboard/Programming using Java.pdf' },
+    { title: 'Data Structures and Algorithms using Java',     provider: 'Infosys Springboard', category: 'Infosys Springboard', date: '2024', icon: 'fa-solid fa-code-branch', pdf: 'certificate/Infosys Sprinboard/Data Structures and Algorithms using Java.pdf' },
+    { title: 'Database Management System Part 1',             provider: 'Infosys Springboard', category: 'Infosys Springboard', date: '2024', icon: 'fa-solid fa-database',  pdf: 'certificate/Infosys Sprinboard/Database Management System Part - 1.pdf' },
+    { title: 'Database Management System Part 2',             provider: 'Infosys Springboard', category: 'Infosys Springboard', date: '2024', icon: 'fa-solid fa-database',  pdf: 'certificate/Infosys Sprinboard/Database Management System Part - 2.pdf' },
+    { title: 'Introduction to NoSQL Databases',               provider: 'Infosys Springboard', category: 'Infosys Springboard', date: '2024', icon: 'fa-solid fa-leaf',      pdf: 'certificate/Infosys Sprinboard/Introduction to NoSQL databases.pdf' },
+    { title: 'Agile Scrum in Practice',                       provider: 'Infosys Springboard', category: 'Infosys Springboard', date: '2024', icon: 'fa-solid fa-arrows-spin', pdf: 'certificate/Infosys Sprinboard/Agile Scrum in Practice.pdf' },
+    { title: 'Software Engineering & Agile Development',      provider: 'Infosys Springboard', category: 'Infosys Springboard', date: '2024', icon: 'fa-solid fa-gears',     pdf: 'certificate/Infosys Sprinboard/Software Engineering and Agile software development.pdf' },
+    // ── GFG ──
+    { title: 'Data Science Bootcamp – Analysing to ML Models',provider: 'GeeksforGeeks',    category: 'GeeksforGeeks', date: '2024', icon: 'fa-solid fa-brain',             pdf: 'certificate/GFG cources/Data Science BootCamp - From Analysing Data To Creating ML Models.pdf' },
+    { title: 'SQL Mastery for Data',                          provider: 'GeeksforGeeks',    category: 'GeeksforGeeks', date: '2024', icon: 'fa-solid fa-table',             pdf: 'certificate/GFG cources/SQL Mastery for Data.pdf' },
+    { title: 'GFG DSA 160 Certificate',                       provider: 'GeeksforGeeks',    category: 'GeeksforGeeks', date: '2024', icon: 'fa-solid fa-code',              pdf: 'certificate/GFG cources/gfg DSA 160 certificate.pdf' },
+    // ── IBM ──
+    { title: 'AI Foundations for Everyone',                   provider: 'IBM / Cognitive Class', category: 'IBM', date: '2024', icon: 'fa-solid fa-microchip',          pdf: 'certificate/IBMSkillsNetwork AI0117EN Certificate _ Cognitive Class.pdf' },
+    // ── Other ──
+    { title: 'Deloitte Data Analytics Job Simulation',        provider: 'Deloitte / Forage', category: 'Other', date: '2024', icon: 'fa-solid fa-chart-pie',             pdf: 'certificate/Deloitte Data Analytics Job Simulation.pdf' },
+    { title: 'Power BI Course',                               provider: 'Online Course',    category: 'Other', date: '2024', icon: 'fa-solid fa-chart-column',           pdf: 'certificate/Power BI cource.pdf' },
+    { title: 'Java Programming',                              provider: 'Great Learning',   category: 'Other', date: '2024', icon: 'fa-brands fa-java',                  pdf: 'certificate/great learning java certificate.pdf' },
+    { title: 'Creating a Simple Web Page with HTML',          provider: 'Online Course',    category: 'Other', date: '2024', icon: 'fa-brands fa-html5',                 pdf: 'certificate/Creating a simple web page with html.pdf' },
   ],
 
   /* --- Achievements --- */
@@ -748,29 +767,381 @@ window.filterProjects = function(category, btn) {
 
 
 /* ---------------------------------------------------------------
-   12. RENDER CERTIFICATIONS
+   12. RENDER CERTIFICATIONS – Digital Certificate Stack
 --------------------------------------------------------------- */
-function renderCertifications() {
-  const container = document.getElementById('certifications-grid');
-  if (!container) return;
 
-  container.innerHTML = portfolioData.certifications.map(cert => `
-    <div class="cert-card-premium glass-card-hover" data-aos="fade-up">
-      <div class="cert-header">
-        <span class="cert-provider">${cert.issuer}</span>
-        <h3 class="cert-title-premium">${cert.title}</h3>
-      </div>
-      <div class="cert-footer">
-        <span class="cert-date">${cert.date}</span>
-        ${cert.link ? `
-          <a href="${cert.link}" target="_blank" class="project-link">
-            Verify <i class="fa-solid fa-arrow-up-right-from-square"></i>
-          </a>
-        ` : ''}
-      </div>
-    </div>
-  `).join('');
+/* ── Group definitions ── */
+const CERT_GROUPS = [
+  { id:'ml',      title:'Machine Learning',       icon:'fa-solid fa-robot',         color:'#8B5CF6', provider:'Coursera · IBM',         category:'Machine Learning'    },
+  { id:'stats',   title:'Statistics & Math',       icon:'fa-solid fa-wave-square',   color:'#06B6D4', provider:'Coursera',               category:'Statistics & Math'   },
+  { id:'ds',      title:'Data Science',            icon:'fa-solid fa-database',      color:'#10B981', provider:'Coursera · IBM',          category:'Data Science'        },
+  { id:'infosys', title:'Infosys Springboard',     icon:'fa-solid fa-building',      color:'#F59E0B', provider:'Infosys Springboard',     category:'Infosys Springboard' },
+  { id:'gfg',     title:'GeeksforGeeks',           icon:'fa-solid fa-code',          color:'#22C55E', provider:'GeeksforGeeks',           category:'GeeksforGeeks'       },
+  { id:'ibm',     title:'IBM · AI',                icon:'fa-solid fa-microchip',     color:'#3B82F6', provider:'IBM · Cognitive Class',   category:'IBM'                 },
+  { id:'other',   title:'Industry & Professional', icon:'fa-solid fa-award',         color:'#EC4899', provider:'Various',                 category:'Other'               },
+];
+
+const CERT_SKILLS = {
+  'Machine Learning':    ['Machine Learning','Python','IBM Watson','Regression','Classification','Unsupervised Learning','EDA'],
+  'Statistics & Math':   ['Statistics','Linear Algebra','Probability','Python','Scipy','Numpy'],
+  'Data Science':        ['Data Science','Python','Jupyter','Data Analysis','Visualization','IBM Cloud'],
+  'Infosys Springboard': ['Java','OOP','DSA','DBMS','NoSQL','Agile','Scrum','Software Engineering'],
+  'GeeksforGeeks':       ['Data Science','SQL','DSA','Python','Problem Solving'],
+  'IBM':                 ['Artificial Intelligence','Machine Learning','NLP','Computer Vision'],
+  'Other':               ['Data Analytics','Power BI','Java','HTML','Web Development','Excel'],
+};
+
+function _certsOfGroup(group) {
+  return portfolioData.certifications
+    .map((c, i) => ({ ...c, _idx: i }))
+    .filter(c => c.category === group.category);
 }
+
+function renderCertifications() {
+  const countEl  = document.getElementById('cert-total-count');
+  const controls = document.getElementById('cert-controls');
+  const grid     = document.getElementById('cert-stacks-grid');
+  if (!grid) return;
+
+  const total = portfolioData.certifications.length;
+  if (countEl) countEl.textContent = total + ' certificates';
+
+  /* ── Controls: search + filter chips ── */
+  if (controls) {
+    controls.innerHTML = `
+      <div class="cs-controls">
+        <label class="cs-search-box" for="cs-search-input">
+          <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+          <input id="cs-search-input" type="text" placeholder="Search certificates…"
+                 autocomplete="off" oninput="csCertSearch(this.value)" aria-label="Search certificates"/>
+        </label>
+        <div class="cs-chips" role="group" aria-label="Filter by category">
+          <button class="cs-chip active" data-group="all" onclick="csCertFilter('all',this)">
+            All <span class="cs-chip-count">${total}</span>
+          </button>
+          ${CERT_GROUPS.map(g => {
+            const n = _certsOfGroup(g).length;
+            return n ? `<button class="cs-chip" data-group="${g.id}" onclick="csCertFilter('${g.id}',this)"
+                                style="--chip-c:${g.color}">
+                          <i class="${g.icon}" aria-hidden="true"></i> ${g.title}
+                          <span class="cs-chip-count">${n}</span>
+                        </button>` : '';
+          }).join('')}
+        </div>
+      </div>`;
+  }
+
+  /* ── Render all stacks ── */
+  _renderCertStacks(CERT_GROUPS, '');
+
+  /* ── Inject gallery overlay ── */
+  _injectCertGallery();
+
+  /* ── Inject modal ── */
+  _injectCertModal();
+}
+
+function _renderCertStacks(groups, searchQ) {
+  const grid = document.getElementById('cert-stacks-grid');
+  if (!grid) return;
+
+  const q = searchQ.trim().toLowerCase();
+  const visible = groups.filter(g => {
+    const c = _certsOfGroup(g);
+    if (!c.length) return false;
+    if (!q) return true;
+    return c.some(cert => cert.title.toLowerCase().includes(q) || g.title.toLowerCase().includes(q));
+  });
+
+  if (!visible.length) {
+    grid.innerHTML = `<div class="cs-empty"><i class="fa-solid fa-certificate"></i><p>No certificates match your search.</p></div>`;
+    return;
+  }
+
+  grid.innerHTML = visible.map(group => {
+    const certs     = _certsOfGroup(group);
+    const ghostN    = Math.min(certs.length - 1, 3);
+    const ghosts    = Array.from({length: ghostN}, (_, i) =>
+      `<div class="cs-ghost cs-ghost-${i + 1}" aria-hidden="true"></div>`
+    ).join('');
+    const dotCount  = Math.min(certs.length, 6);
+    const dots      = Array.from({length: dotCount}, (_, i) =>
+      `<span class="cs-dot" style="opacity:${Math.max(0.2, 1 - i * 0.15)};transform:scale(${Math.max(0.6, 1 - i*0.08)})"></span>`
+    ).join('');
+
+    return `
+      <div class="cs-stack" tabindex="0" role="button"
+           aria-label="Open ${group.title} certificates (${certs.length})"
+           onclick="openCertGallery('${group.id}')"
+           onkeydown="if(event.key==='Enter'||event.key===' ')openCertGallery('${group.id}')"
+           style="--gc:${group.color}">
+        <div class="cs-stack-wrap">
+          ${ghosts}
+          <div class="cs-top-card">
+            <div class="cs-glow-orb" aria-hidden="true"></div>
+            <div class="cs-shimmer" aria-hidden="true"></div>
+            <div class="cs-card-inner">
+              <div class="cs-card-head">
+                <div class="cs-icon-ring">
+                  <i class="${group.icon}" aria-hidden="true"></i>
+                </div>
+                <span class="cs-count-badge">${certs.length}</span>
+              </div>
+              <div class="cs-card-mid">
+                <h3 class="cs-group-title">${group.title}</h3>
+                <p class="cs-group-provider">${group.provider}</p>
+              </div>
+              <div class="cs-card-foot">
+                <div class="cs-dots">${dots}</div>
+                <span class="cs-cta">Explore <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="cs-label">${group.title}</p>
+      </div>`;
+  }).join('');
+}
+
+function _injectCertGallery() {
+  if (document.getElementById('cs-gallery')) return;
+  const el = document.createElement('div');
+  el.id = 'cs-gallery';
+  el.className = 'cs-gallery';
+  el.setAttribute('role','dialog'); el.setAttribute('aria-modal','true'); el.setAttribute('aria-label','Certificate gallery');
+  el.innerHTML = `
+    <div class="cs-gallery-bd" onclick="closeCertGallery()" aria-hidden="true"></div>
+    <div class="cs-gallery-panel">
+      <div class="cs-gallery-hd">
+        <div class="cs-gallery-hd-left">
+          <button class="cs-back-btn" onclick="closeCertGallery()" aria-label="Close gallery">
+            <i class="fa-solid fa-arrow-left"></i>
+          </button>
+          <div>
+            <h3 id="cs-gallery-title" class="cs-gallery-title"></h3>
+            <p id="cs-gallery-sub"   class="cs-gallery-sub"></p>
+          </div>
+        </div>
+        <button class="cs-close-btn" onclick="closeCertGallery()" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="cs-skills-row" id="cs-gallery-skills"></div>
+      <div class="cs-gallery-grid" id="cs-gallery-grid"></div>
+    </div>`;
+  document.body.appendChild(el);
+  document.addEventListener('keydown', e => { if(e.key==='Escape') { closeCertGallery(); closeCertModal(); } });
+}
+
+function _injectCertModal() {
+  if (document.getElementById('cs-modal')) return;
+  const el = document.createElement('div');
+  el.id = 'cs-modal';
+  el.className = 'cs-modal';
+  el.setAttribute('role','dialog'); el.setAttribute('aria-modal','true'); el.setAttribute('aria-label','Certificate detail');
+  el.innerHTML = `
+    <div class="cs-modal-bd" onclick="closeCertModal()" aria-hidden="true"></div>
+    <div class="cs-modal-panel">
+      <button class="cs-modal-close" onclick="closeCertModal()" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+      <div class="cs-modal-layout">
+        <div class="cs-modal-preview" id="cs-modal-preview">
+          <div class="cs-modal-cert-card" id="cs-modal-cert-card">
+            <div class="cs-modal-cert-icon" id="cs-modal-cert-icon"></div>
+            <div class="cs-modal-cert-lines" aria-hidden="true">
+              <div class="cs-line cs-line-lg"></div>
+              <div class="cs-line cs-line-md"></div>
+              <div class="cs-line cs-line-sm"></div>
+            </div>
+            <div class="cs-modal-cert-seal" id="cs-modal-cert-seal" aria-hidden="true">
+              <i class="fa-solid fa-certificate"></i>
+            </div>
+          </div>
+        </div>
+        <div class="cs-modal-info">
+          <span class="cs-modal-cat" id="cs-modal-cat"></span>
+          <h2 class="cs-modal-title" id="cs-modal-title"></h2>
+          <div class="cs-modal-meta">
+            <span class="cs-modal-meta-item" id="cs-modal-provider">
+              <i class="fa-solid fa-building" aria-hidden="true"></i> <span></span>
+            </span>
+            <span class="cs-modal-meta-item" id="cs-modal-date">
+              <i class="fa-regular fa-calendar" aria-hidden="true"></i> <span></span>
+            </span>
+          </div>
+          <div class="cs-modal-skills-wrap" id="cs-modal-skills-wrap">
+            <p class="cs-modal-skills-lbl"><i class="fa-solid fa-tags" aria-hidden="true"></i> Skills Learned</p>
+            <div class="cs-modal-skills" id="cs-modal-skills"></div>
+          </div>
+          <div class="cs-modal-actions" id="cs-modal-actions"></div>
+        </div>
+      </div>
+    </div>`;
+  document.body.appendChild(el);
+}
+
+/* ── Public API ── */
+window.openCertGallery = function(groupId) {
+  const group  = CERT_GROUPS.find(g => g.id === groupId);
+  const overlay= document.getElementById('cs-gallery');
+  const title  = document.getElementById('cs-gallery-title');
+  const sub    = document.getElementById('cs-gallery-sub');
+  const skills = document.getElementById('cs-gallery-skills');
+  const grid   = document.getElementById('cs-gallery-grid');
+  if (!overlay || !group) return;
+
+  const certs  = _certsOfGroup(group);
+  if (title) title.textContent = group.title;
+  if (sub)   sub.textContent   = `${group.provider} · ${certs.length} certificates`;
+
+  /* Skills row */
+  const groupSkills = CERT_SKILLS[group.category] || [];
+  if (skills) skills.innerHTML = groupSkills.map(s =>
+    `<span class="cs-skill-chip" style="--gc:${group.color}">${s}</span>`
+  ).join('');
+
+  /* Cert mini-cards */
+  if (grid) grid.innerHTML = certs.map((cert, i) => `
+    <div class="cs-gallery-card" style="--gc:${group.color};animation-delay:${i * 60}ms"
+         onclick="openCertModal(${cert._idx})" tabindex="0" role="button"
+         aria-label="View ${cert.title}"
+         onkeydown="if(event.key==='Enter')openCertModal(${cert._idx})">
+      <div class="cs-gc-icon"><i class="${cert.icon}" aria-hidden="true"></i></div>
+      <div class="cs-gc-body">
+        <h4 class="cs-gc-title">${cert.title}</h4>
+        <p  class="cs-gc-provider">${cert.provider}</p>
+        <span class="cs-gc-date"><i class="fa-regular fa-calendar" aria-hidden="true"></i> ${cert.date}</span>
+      </div>
+      <div class="cs-gc-arrow"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></div>
+    </div>`).join('');
+
+  overlay.style.setProperty('--gc', group.color);
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+};
+
+window.closeCertGallery = function() {
+  const overlay = document.getElementById('cs-gallery');
+  if (overlay) overlay.classList.remove('active');
+  document.body.style.overflow = '';
+};
+
+window.openCertModal = function(certIdx) {
+  const cert   = portfolioData.certifications[certIdx];
+  const group  = CERT_GROUPS.find(g => g.category === cert.category);
+  const modal  = document.getElementById('cs-modal');
+  if (!modal || !cert) return;
+
+  const color = group?.color || '#8B5CF6';
+  modal.style.setProperty('--gc', color);
+
+  /* Populate */
+  _setText('cs-modal-cat',      cert.category);
+  _setText('cs-modal-title',    cert.title);
+  _setText('#cs-modal-provider span', cert.provider);
+  _setText('#cs-modal-date span',     cert.date);
+
+  const catEl = document.getElementById('cs-modal-cat');
+  if (catEl) catEl.style.setProperty('--gc', color);
+
+  const iconEl = document.getElementById('cs-modal-cert-icon');
+  if (iconEl) iconEl.innerHTML = `<i class="${cert.icon}" aria-hidden="true"></i>`;
+
+  const sealEl = document.getElementById('cs-modal-cert-seal');
+  if (sealEl) sealEl.style.color = color;
+
+  const cardEl = document.getElementById('cs-modal-cert-card');
+  if (cardEl) {
+    cardEl.style.setProperty('--gc', color);
+    cardEl.style.borderColor = color + '33';
+  }
+
+  /* Skills */
+  const skills = CERT_SKILLS[cert.category] || [];
+  const sw = document.getElementById('cs-modal-skills');
+  if (sw) sw.innerHTML = skills.map(s => `<span class="cs-skill-chip" style="--gc:${color}">${s}</span>`).join('');
+
+  /* Actions */
+  const act = document.getElementById('cs-modal-actions');
+  if (act) act.innerHTML = `
+    <a href="${cert.pdf}" download class="cs-modal-btn cs-modal-btn-primary">
+      <i class="fa-solid fa-download" aria-hidden="true"></i> Download PDF
+    </a>
+    <button class="cs-modal-btn cs-modal-btn-secondary"
+            onclick="openCertPdfViewer('${cert.pdf.replace(/'/g,"\\'")}','${cert.title.replace(/'/g,"\\'")}')">
+      <i class="fa-solid fa-eye" aria-hidden="true"></i> View PDF
+    </button>`;
+
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+};
+
+window.closeCertModal = function() {
+  const modal = document.getElementById('cs-modal');
+  if (modal) modal.classList.remove('active');
+  document.body.style.overflow = '';
+};
+
+window.openCertPdfViewer = function(pdf, title) {
+  closeCertModal();
+  /* Reuse or create simple iframe viewer */
+  let lb = document.getElementById('cert-pdf-lightbox');
+  if (!lb) {
+    lb = document.createElement('div');
+    lb.id = 'cert-pdf-lightbox';
+    lb.className = 'cert-pdf-lightbox';
+    lb.innerHTML = `
+      <div class="cert-pdf-backdrop" onclick="closeCertPdfViewer()"></div>
+      <div class="cert-pdf-panel">
+        <div class="cert-pdf-header">
+          <p id="cert-pdf-title" class="cert-pdf-caption"></p>
+          <div class="cert-pdf-actions">
+            <a id="cert-pdf-download" href="" download class="cert-pdf-dl-btn"><i class="fa-solid fa-download"></i> Download</a>
+            <button class="cert-pdf-close" onclick="closeCertPdfViewer()" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+        </div>
+        <iframe id="cert-pdf-frame" src="" title="Certificate PDF" loading="lazy"></iframe>
+      </div>`;
+    document.body.appendChild(lb);
+  }
+  document.getElementById('cert-pdf-frame').src = pdf;
+  const capEl = document.getElementById('cert-pdf-title');
+  const dlEl  = document.getElementById('cert-pdf-download');
+  if (capEl) capEl.textContent = title;
+  if (dlEl)  dlEl.href = pdf;
+  lb.classList.add('active');
+  document.body.style.overflow = 'hidden';
+};
+
+window.closeCertPdfViewer = function() {
+  const lb = document.getElementById('cert-pdf-lightbox');
+  if (lb) { lb.classList.remove('active'); document.getElementById('cert-pdf-frame').src = ''; }
+  document.body.style.overflow = '';
+};
+
+/* Alias for backwards compatibility */
+window.closeCertPdf = window.closeCertPdfViewer;
+
+window.csCertFilter = function(groupId, btn) {
+  document.querySelectorAll('.cs-chip').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  const groups = groupId === 'all' ? CERT_GROUPS : CERT_GROUPS.filter(g => g.id === groupId);
+  _renderCertStacks(groups, document.getElementById('cs-search-input')?.value || '');
+};
+
+window.csCertSearch = function(q) {
+  const activeChip = document.querySelector('.cs-chip.active');
+  const groupId    = activeChip?.dataset.group || 'all';
+  const groups     = groupId === 'all' ? CERT_GROUPS : CERT_GROUPS.filter(g => g.id === groupId);
+  _renderCertStacks(groups, q);
+};
+
+function _setText(sel, val) {
+  const el = typeof sel === 'string' && sel.startsWith('#')
+    ? document.querySelector(sel)
+    : document.getElementById(sel);
+  if (el) el.textContent = val;
+}
+
+
+
 
 /* ---------------------------------------------------------------
    13. RENDER ACHIEVEMENTS

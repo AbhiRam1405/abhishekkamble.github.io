@@ -159,15 +159,15 @@
           <!-- Stat chips -->
           <div class="hero-stats" id="hero-stats">
             <div class="hero-stat-chip">
-              <span class="hero-stat-num">2+</span>
+              <span class="hero-stat-num">4+</span>
               <span class="hero-stat-label">Years Coding</span>
             </div>
             <div class="hero-stat-chip">
-              <span class="hero-stat-num">10+</span>
+              <span class="hero-stat-num">15+</span>
               <span class="hero-stat-label">Projects Built</span>
             </div>
             <div class="hero-stat-chip">
-              <span class="hero-stat-num">200+</span>
+              <span class="hero-stat-num">400+</span>
               <span class="hero-stat-label">Problems Solved</span>
             </div>
           </div>
@@ -452,11 +452,11 @@
           <!-- Stats row -->
           <div class="about-stats-row" id="about-stats-row">
             <div class="about-stat glass-card">
-              <span class="about-stat-num" data-target="10">0</span><span class="about-stat-suffix">+</span>
+              <span class="about-stat-num" data-target="15">0</span><span class="about-stat-suffix">+</span>
               <span class="about-stat-label">Projects Completed</span>
             </div>
             <div class="about-stat glass-card">
-              <span class="about-stat-num" data-target="3">0</span><span class="about-stat-suffix">+</span>
+              <span class="about-stat-num" data-target="25">0</span><span class="about-stat-suffix">+</span>
               <span class="about-stat-label">Certifications</span>
             </div>
             <div class="about-stat glass-card">
@@ -579,15 +579,17 @@
   <!-- ============================================================
        CERTIFICATIONS SECTION
   ============================================================ -->
-  <section id="certifications" class="section-pad" aria-label="Certifications">
+  <section id="certifications" class="section-pad cert-stack-section" aria-label="Certifications">
     <div class="container-main">
       <div class="section-header" data-aos="fade-up">
         <span class="section-tag">Verified Credentials</span>
         <h2 class="section-title">My <span class="text-gradient">Certifications</span></h2>
-        <p class="section-subtitle">Industry-recognized certifications and courses</p>
+        <p class="section-subtitle">Industry-recognized certifications and courses — <strong class="text-primary" id="cert-total-count"></strong></p>
       </div>
-      <!-- Certifications grid injected by script.js -->
-      <div id="certifications-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" data-aos="fade-up" data-aos-delay="100"></div>
+      <!-- Search & filter chips injected by JS -->
+      <div id="cert-controls"></div>
+      <!-- Certificate stacks grid injected by JS -->
+      <div id="cert-stacks-grid" class="cert-stacks-grid"></div>
 
       <!-- Credly Credentials Card -->
       <div class="credly-card" data-aos="fade-up" data-aos-delay="200">
