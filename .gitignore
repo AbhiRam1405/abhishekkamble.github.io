@@ -1,0 +1,32 @@
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node (if used locally)
+node_modules/
+package-lock.json
+
+# Environment / secrets
+.env
+.env.local
+.env.*.local
+
+# Build output
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Misc
+.sixth/
+chatbot-config.js

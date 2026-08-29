@@ -360,6 +360,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderFooter();
   initEducationJourney();
   initGitHubSection();
+  initChatbot();
   
   // Initialize AOS last
   setTimeout(() => {
@@ -1261,27 +1262,97 @@ function renderContact() {
 
       <!-- Form Column -->
       <div class="contact-form-premium glass-card" data-aos="fade-left">
-        <form id="portfolio-contact-form">
+        <form id="portfolio-contact-form" action="https://api.web3forms.com/submit" method="POST">
+          <!-- Web3Forms hidden fields -->
+          <input type="hidden" name="access_key" value="bccfccf6-d5ca-4bb0-a411-2e9344f7ad36">
+          <input type="hidden" name="subject" value="New Portfolio Contact - Abhishek Kamble">
+          <input type="hidden" name="from_name" value="Portfolio Contact Form">
+          <!-- Honeypot spam protection -->
+          <input type="checkbox" name="botcheck" class="hidden" style="display:none">
+
           <div class="form-group-premium">
-            <label class="form-label-premium">Full Name</label>
-            <input type="text" class="form-input-premium" placeholder="John Doe" required>
+            <label class="form-label-premium" for="contact-name">Full Name</label>
+            <input type="text" id="contact-name" name="name" class="form-input-premium" placeholder="John Doe" required minlength="2">
           </div>
           <div class="form-group-premium">
-            <label class="form-label-premium">Email Address</label>
-            <input type="email" class="form-input-premium" placeholder="john@example.com" required>
+            <label class="form-label-premium" for="contact-email">Email Address</label>
+            <input type="email" id="contact-email" name="email" class="form-input-premium" placeholder="john@example.com" required>
           </div>
           <div class="form-group-premium">
-            <label class="form-label-premium">Message</label>
-            <textarea class="form-input-premium" placeholder="Hi Abhishek, I'd like to talk about..." required></textarea>
+            <label class="form-label-premium" for="contact-message">Message</label>
+            <textarea id="contact-message" name="message" class="form-input-premium" placeholder="Hi Abhishek, I'd like to talk about..." required minlength="10"></textarea>
           </div>
-          <button type="submit" class="btn-hero-primary w-full">
-            <i class="fa-solid fa-paper-plane"></i> Send Message
+
+          <!-- Status message -->
+          <div id="contact-status" class="contact-status" aria-live="polite"></div>
+
+          <button type="submit" id="contact-submit-btn" class="btn-hero-primary w-full">
+            <i class="fa-solid fa-paper-plane"></i> <span>Send Message</span>
             <span class="btn-hero-shine"></span>
           </button>
         </form>
       </div>
     </div>
   `;
+
+  /* ── Web3Forms submit handler ── */
+  const form   = document.getElementById('portfolio-contact-form');
+  const btn    = document.getElementById('contact-submit-btn');
+  const status = document.getElementById('contact-status');
+
+  if (!form) return;
+
+  let isSubmitting = false;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    /* Prevent duplicate submissions */
+    if (isSubmitting) return;
+    isSubmitting = true;
+
+    /* Loading state */
+    const btnIcon = btn.querySelector('i');
+    const btnText = btn.querySelector('span:not(.btn-hero-shine)');
+    const origIcon = btnIcon.className;
+    const origText = btnText.textContent;
+
+    btnIcon.className = 'fa-solid fa-spinner fa-spin';
+    btnText.textContent = 'Sending...';
+    btn.disabled = true;
+    btn.style.opacity = '0.7';
+    btn.style.pointerEvents = 'none';
+    status.innerHTML = '';
+    status.className = 'contact-status';
+
+    try {
+      const formData = new FormData(form);
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData,
+      });
+      const data = await res.json();
+
+      if (data.success) {
+        status.innerHTML = '<i class="fa-solid fa-circle-check"></i> Message sent successfully! I\'ll get back to you soon.';
+        status.className = 'contact-status contact-status--success';
+        form.reset();
+      } else {
+        throw new Error(data.message || 'Submission failed');
+      }
+    } catch (err) {
+      status.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> Something went wrong. Please try again.';
+      status.className = 'contact-status contact-status--error';
+    } finally {
+      /* Restore button */
+      btnIcon.className = origIcon;
+      btnText.textContent = origText;
+      btn.disabled = false;
+      btn.style.opacity = '';
+      btn.style.pointerEvents = '';
+      isSubmitting = false;
+    }
+  });
 }
 
 /* ---------------------------------------------------------------
@@ -1620,3 +1691,296 @@ function initEducationJourney() {
   window.addEventListener('resize', () => { startTime = null; }, { passive: true });
 }
 
+/* ---------------------------------------------------------------
+   CHATBOT – AI-Powered Assistant (Google Gemini)
+--------------------------------------------------------------- */
+function initChatbot() {
+
+  /* ── Config ── */
+  const GEMINI_API_KEY = (typeof CHATBOT_CONFIG !== 'undefined' && CHATBOT_CONFIG.GEMINI_API_KEY) || 'PASTE_YOUR_GEMINI_API_KEY_HERE';
+  const GEMINI_MODEL   = 'gemini-2.0-flash';
+  const GEMINI_URL     = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`;
+
+  /* ── DOM refs ── */
+  const fab       = document.getElementById('chatbot-fab');
+  const badge     = document.getElementById('chatbot-fab-badge');
+  const chatWin   = document.getElementById('chatbot-window');
+  const closeBtn  = document.getElementById('chatbot-close');
+  const msgArea   = document.getElementById('chatbot-messages');
+  const input     = document.getElementById('chatbot-input');
+  const sendBtn   = document.getElementById('chatbot-send');
+  const statusEl  = document.getElementById('chatbot-status');
+
+  if (!fab || !chatWin) return;
+
+  let isOpen        = false;
+  let isProcessing  = false;
+  let conversationHistory = [];   // { role, parts:[{text}] }
+
+  /* ── Build system context from portfolioData ── */
+  function buildSystemPrompt() {
+    const d = portfolioData;
+    const allSkills = Object.values(d.skills).flat().map(s => s.name).join(', ');
+    const projects  = d.projects.map(p =>
+      `• ${p.title} (${p.category}): ${p.description} | Tech: ${p.techStack.join(', ')}${p.liveDemo ? ' | Live: ' + p.liveDemo : ''}${p.github ? ' | GitHub: ' + p.github : ''}`
+    ).join('\n');
+    const certs = d.certifications.map(c => `• ${c.title} — ${c.provider} (${c.date})`).join('\n');
+    const achievements = d.achievements.map(a => `• ${a.title}: ${a.description} (${a.year})`).join('\n');
+    const education = d.education.map(e =>
+      `• ${e.degree} at ${e.institution} (${e.duration})${e.grade ? ' — Grade: ' + e.grade : ''}${e.current ? ' [Currently Pursuing]' : ''}`
+    ).join('\n');
+    const services = d.services.map(s => `• ${s.title}: ${s.description}`).join('\n');
+
+    return `You are an AI assistant on Abhishek Kamble's portfolio website. You answer questions about Abhishek based on the following data. Be friendly, concise, and helpful. Use short paragraphs. If asked something unrelated to Abhishek, politely redirect. Use markdown formatting (bold, lists) when helpful.
+
+PERSONAL INFO:
+Name: ${d.personal.name}
+Title: ${d.personal.title}
+Location: ${d.personal.location}
+Email: ${d.personal.email}
+GitHub: ${d.personal.github}
+LinkedIn: ${d.personal.linkedin}
+Bio: ${d.personal.about}
+
+SKILLS: ${allSkills}
+
+PROJECTS:
+${projects}
+
+CERTIFICATIONS (${d.certifications.length} total):
+${certs}
+
+ACHIEVEMENTS:
+${achievements}
+
+EDUCATION:
+${education}
+
+SERVICES:
+${services}
+
+RULES:
+- Be concise. Keep responses under 150 words unless the user asks for detail.
+- Always speak about Abhishek in third person ("Abhishek has..." / "He specializes in...").
+- When listing items, use bullet points.
+- If the user asks for contact info, share the email and LinkedIn.
+- If unsure about something, say so honestly rather than making things up.
+- Be enthusiastic but professional.`;
+  }
+
+  const systemPrompt = buildSystemPrompt();
+
+  /* ── Markdown renderer (basic) ── */
+  function renderMarkdown(text) {
+    return text
+      // Bold
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      // Inline code
+      .replace(/`(.+?)`/g, '<code>$1</code>')
+      // Links
+      .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>')
+      // Unordered lists: lines starting with - or •
+      .replace(/^[\-•]\s+(.+)$/gm, '<li>$1</li>')
+      // Wrap consecutive <li> in <ul>
+      .replace(/((?:<li>.*<\/li>\n?)+)/g, '<ul>$1</ul>')
+      // Line breaks → paragraphs
+      .split(/\n{2,}/)
+      .map(p => {
+        p = p.trim();
+        if (!p) return '';
+        if (p.startsWith('<ul>') || p.startsWith('<ol>')) return p;
+        return `<p>${p.replace(/\n/g, '<br>')}</p>`;
+      })
+      .filter(Boolean)
+      .join('');
+  }
+
+  /* ── Add message to chat ── */
+  function addMessage(text, sender, withChips) {
+    const div = document.createElement('div');
+    div.className = `chatbot-msg chatbot-msg--${sender}`;
+    div.innerHTML = sender === 'bot' ? renderMarkdown(text) : text;
+    msgArea.appendChild(div);
+
+    // Quick-reply chips
+    if (withChips && withChips.length) {
+      const chipWrap = document.createElement('div');
+      chipWrap.className = 'chatbot-chips';
+      withChips.forEach(label => {
+        const chip = document.createElement('button');
+        chip.className = 'chatbot-chip';
+        chip.textContent = label;
+        chip.addEventListener('click', () => {
+          chipWrap.remove();
+          handleSend(label);
+        });
+        chipWrap.appendChild(chip);
+      });
+      msgArea.appendChild(chipWrap);
+    }
+
+    scrollToBottom();
+  }
+
+  /* ── Typing indicator ── */
+  function showTyping() {
+    const div = document.createElement('div');
+    div.className = 'chatbot-typing';
+    div.id = 'chatbot-typing';
+    div.innerHTML = '<span class="chatbot-typing-dot"></span><span class="chatbot-typing-dot"></span><span class="chatbot-typing-dot"></span>';
+    msgArea.appendChild(div);
+    scrollToBottom();
+  }
+  function hideTyping() {
+    const el = document.getElementById('chatbot-typing');
+    if (el) el.remove();
+  }
+
+  function scrollToBottom() {
+    requestAnimationFrame(() => {
+      msgArea.scrollTop = msgArea.scrollHeight;
+    });
+  }
+
+  /* ── Gemini API call ── */
+  async function callGemini(userMessage) {
+    // Add user message to history
+    conversationHistory.push({
+      role: 'user',
+      parts: [{ text: userMessage }]
+    });
+
+    const body = {
+      system_instruction: {
+        parts: [{ text: systemPrompt }]
+      },
+      contents: conversationHistory,
+      generationConfig: {
+        temperature: 0.7,
+        topP: 0.9,
+        maxOutputTokens: 512,
+      }
+    };
+
+    const response = await fetch(GEMINI_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+
+    if (!response.ok) {
+      const err = await response.json().catch(() => ({}));
+      throw new Error(err?.error?.message || `API error ${response.status}`);
+    }
+
+    const data = await response.json();
+    const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+    if (!reply) throw new Error('Empty response from AI');
+
+    // Add bot response to history
+    conversationHistory.push({
+      role: 'model',
+      parts: [{ text: reply }]
+    });
+
+    return reply;
+  }
+
+  /* ── Handle sending a message ── */
+  async function handleSend(text) {
+    const message = text || input.value.trim();
+    if (!message || isProcessing) return;
+
+    isProcessing = true;
+    input.value = '';
+    sendBtn.disabled = true;
+    statusEl.textContent = 'Typing...';
+
+    // Show user message
+    addMessage(message, 'user');
+    showTyping();
+
+    try {
+      if (GEMINI_API_KEY === 'PASTE_YOUR_GEMINI_API_KEY_HERE') {
+        throw new Error('API_KEY_NOT_SET');
+      }
+      const reply = await callGemini(message);
+      hideTyping();
+      addMessage(reply, 'bot');
+    } catch (err) {
+      hideTyping();
+      console.warn('Chatbot error:', err);
+      if (err.message === 'API_KEY_NOT_SET') {
+        addMessage(
+          "⚠️ **API key not configured yet.** The site owner needs to add a Gemini API key for me to work. In the meantime, feel free to explore the portfolio sections above!",
+          'bot'
+        );
+      } else {
+        addMessage(
+          "Sorry, I couldn't process that right now. Please try again in a moment, or reach out directly via the **Contact** section below! 😊",
+          'bot'
+        );
+      }
+    } finally {
+      isProcessing = false;
+      statusEl.textContent = 'Online — Ask me anything!';
+      updateSendBtn();
+    }
+  }
+
+  /* ── Toggle chat window ── */
+  function toggleChat() {
+    isOpen = !isOpen;
+    fab.classList.toggle('chatbot-fab--open', isOpen);
+    chatWin.classList.toggle('chatbot-window--open', isOpen);
+    chatWin.setAttribute('aria-hidden', String(!isOpen));
+    fab.setAttribute('aria-expanded', String(isOpen));
+
+    if (isOpen) {
+      badge.classList.add('hidden');
+      input.focus();
+      scrollToBottom();
+    }
+  }
+
+  function closeChat() {
+    if (isOpen) toggleChat();
+  }
+
+  /* ── Enable/disable send button based on input ── */
+  function updateSendBtn() {
+    sendBtn.disabled = !input.value.trim() || isProcessing;
+  }
+
+  /* ── Event listeners ── */
+  fab.addEventListener('click', toggleChat);
+  closeBtn.addEventListener('click', closeChat);
+
+  input.addEventListener('input', updateSendBtn);
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSend();
+    }
+  });
+  sendBtn.addEventListener('click', () => handleSend());
+
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && isOpen) closeChat();
+  });
+
+  // Close on click outside
+  document.addEventListener('click', (e) => {
+    if (isOpen && !chatWin.contains(e.target) && !fab.contains(e.target)) {
+      closeChat();
+    }
+  });
+
+  /* ── Welcome message on first load ── */
+  addMessage(
+    "Hi there! 👋 I'm **AK Assistant**, Abhishek's AI-powered portfolio assistant. Ask me anything about his **skills**, **projects**, **certifications**, or **experience**!",
+    'bot',
+    ['Tell me about Abhishek', 'What are his skills?', 'Show me his projects', 'How to contact him?']
+  );
+}

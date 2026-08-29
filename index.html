@@ -741,6 +741,51 @@
     </div>
   </footer>
 
+  <!-- ============================================================
+       CHATBOT WIDGET
+  ============================================================ -->
+  <!-- Floating Action Button -->
+  <button id="chatbot-fab" class="chatbot-fab" aria-label="Open chat assistant" aria-expanded="false" aria-controls="chatbot-window">
+    <i class="fa-solid fa-comments chatbot-fab-icon chatbot-fab-icon--chat" aria-hidden="true"></i>
+    <i class="fa-solid fa-xmark chatbot-fab-icon chatbot-fab-icon--close" aria-hidden="true"></i>
+    <span class="chatbot-fab-pulse" aria-hidden="true"></span>
+    <span class="chatbot-fab-badge" id="chatbot-fab-badge" aria-hidden="true">1</span>
+  </button>
+
+  <!-- Chat Window -->
+  <div id="chatbot-window" class="chatbot-window" role="dialog" aria-label="Chat with AI assistant" aria-hidden="true">
+
+    <!-- Header -->
+    <div class="chatbot-header">
+      <div class="chatbot-header-left">
+        <div class="chatbot-avatar">
+          <i class="fa-solid fa-robot" aria-hidden="true"></i>
+          <span class="chatbot-avatar-dot" aria-hidden="true"></span>
+        </div>
+        <div>
+          <h3 class="chatbot-header-title">AK Assistant</h3>
+          <p class="chatbot-header-status" id="chatbot-status">Online — Ask me anything!</p>
+        </div>
+      </div>
+      <button id="chatbot-close" class="chatbot-close" aria-label="Close chat">
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </button>
+    </div>
+
+    <!-- Messages Area -->
+    <div class="chatbot-messages" id="chatbot-messages" aria-live="polite" aria-relevant="additions">
+      <!-- Welcome message injected by JS -->
+    </div>
+
+    <!-- Input Bar -->
+    <div class="chatbot-input-bar">
+      <input type="text" id="chatbot-input" class="chatbot-input" placeholder="Ask about Abhishek..." autocomplete="off" aria-label="Type your message" />
+      <button id="chatbot-send" class="chatbot-send" aria-label="Send message" disabled>
+        <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+
   <!-- Scroll-to-top Button -->
   <button id="scroll-top-btn" class="btn-icon fixed bottom-6 right-6 z-50 opacity-0 pointer-events-none transition-all duration-300" aria-label="Scroll to top">
     <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
@@ -750,6 +795,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" crossorigin="anonymous"></script>
   <!-- GitHub Calendar JS -->
   <script src="https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js"></script>
+  <!-- Chatbot Config (gitignored – contains API key) -->
+  <script src="chatbot-config.js"></script>
   <!-- Portfolio Data -->
   <script src="script.js"></script>
 </body>
