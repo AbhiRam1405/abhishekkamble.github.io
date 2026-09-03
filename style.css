@@ -5066,3 +5066,138 @@ textarea.form-input-premium {
     bottom: 5rem !important;
   }
 }
+
+/* ================================================================
+   TOTAL VISITORS COUNTER (Footer)
+   Dark futuristic glassmorphism design
+================================================================ */
+.visitor-counter-card {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.15rem 2.25rem;
+  min-width: 160px;
+  border-radius: var(--radius-lg);
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.visitor-counter-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-primary), var(--color-accent), transparent);
+  opacity: 0.7;
+  transition: opacity var(--transition-base), left var(--transition-base), right var(--transition-base);
+}
+
+.visitor-counter-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(139, 92, 246, 0.4);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5), 0 0 24px rgba(139, 92, 246, 0.25);
+}
+
+.visitor-counter-card:hover::before {
+  opacity: 1;
+  left: 5%;
+  right: 5%;
+}
+
+.visitor-counter-icon {
+  font-size: 1.2rem;
+  color: var(--color-accent);
+  margin-bottom: 0.35rem;
+  line-height: 1;
+  filter: drop-shadow(0 0 8px rgba(6, 182, 212, 0.55));
+  transition: transform var(--transition-base), filter var(--transition-base);
+}
+
+.visitor-counter-card:hover .visitor-counter-icon {
+  transform: scale(1.12);
+  filter: drop-shadow(0 0 14px rgba(6, 182, 212, 0.85));
+}
+
+.visitor-counter-number {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+  background: linear-gradient(135deg, #F8FAFC 20%, #C084FC 60%, var(--color-accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  min-height: 2.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.visitor-counter-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-text-muted);
+  margin-top: 0.15rem;
+}
+
+.visitor-skeleton {
+  display: inline-block;
+  width: 60px;
+  height: 1.4rem;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.04) 25%, rgba(255, 255, 255, 0.12) 50%, rgba(255, 255, 255, 0.04) 75%);
+  background-size: 200% 100%;
+  animation: visitorSkeletonShimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes visitorSkeletonShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.visitor-number-animate {
+  animation: visitorNumberPop 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes visitorNumberPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.92) translateY(4px);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .visitor-counter-card {
+    padding: 1rem 1.75rem;
+    min-width: 140px;
+  }
+  .visitor-counter-number {
+    font-size: 1.5rem;
+    min-height: 1.8rem;
+  }
+  .visitor-counter-icon {
+    font-size: 1.05rem;
+  }
+  .visitor-counter-label {
+    font-size: 0.68rem;
+  }
+}

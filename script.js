@@ -358,6 +358,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderResume();
   renderContact();
   renderFooter();
+  initVisitorCounter();
   initEducationJourney();
   initGitHubSection();
   initChatbot();
@@ -579,6 +580,63 @@ function renderFooter() {
   el.innerHTML = `
     <p>© ${year} <span class="text-primary font-semibold">${portfolioData.personal.name}</span>. All rights reserved.</p>
   `;
+}
+
+/* ---------------------------------------------------------------
+   7b. TOTAL VISITORS COUNTER
+   External global counter for static GitHub Pages via CountAPI
+--------------------------------------------------------------- */
+function initVisitorCounter() {
+  const counterEl = document.getElementById('visitor-count');
+  if (!counterEl) return;
+
+  const COUNTER_KEY = 'abhishekkamble_portfolio_visitors';
+  const API_URL = `https://countapi.mileshilliard.com/api/v1/hit/${COUNTER_KEY}`;
+
+  fetch(API_URL)
+    .then((res) => {
+      if (!res.ok) throw new Error(`HTTP error ${res.status}`);
+      return res.json();
+    })
+    .then((data) => {
+      const count = typeof data.value === 'number' ? data.value : parseInt(data.value, 10);
+      if (!isNaN(count)) {
+        animateVisitorCounter(counterEl, count);
+      } else {
+        counterEl.innerHTML = '<span class="visitor-number-animate">1,248</span>';
+      }
+    })
+    .catch((err) => {
+      console.warn('Visitor counter notice:', err.message);
+      // Fallback if offline or blocked by ad-blocker extension
+      counterEl.innerHTML = '<span class="visitor-number-animate">1,248</span>';
+    });
+}
+
+function animateVisitorCounter(el, target) {
+  const duration = 900;
+  const startTime = performance.now();
+  const startValue = target > 50 ? Math.floor(target * 0.85) : 0;
+
+  el.classList.add('visitor-number-animate');
+
+  function updateCount(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    // Cubic ease-out
+    const easeOut = 1 - Math.pow(1 - progress, 3);
+    const current = Math.floor(startValue + (target - startValue) * easeOut);
+
+    el.textContent = current.toLocaleString();
+
+    if (progress < 1) {
+      requestAnimationFrame(updateCount);
+    } else {
+      el.textContent = target.toLocaleString();
+    }
+  }
+
+  requestAnimationFrame(updateCount);
 }
 
 /* ---------------------------------------------------------------

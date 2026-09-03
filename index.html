@@ -733,11 +733,25 @@
   <!-- ============================================================
        FOOTER
   ============================================================ -->
-  <footer id="footer" class="py-8 border-t border-white/10" role="contentinfo">
-    <div class="container-main flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/50">
-      <!-- Footer content injected by script.js -->
-      <div id="footer-content"></div>
-      <p>Built By <span class="text-primary"></span> Abhishek Kamble</p>
+  <footer id="footer" class="py-10 border-t border-white/10" role="contentinfo">
+    <div class="container-main flex flex-col items-center gap-6 text-sm text-white/50">
+      <!-- Total Visitors Counter -->
+      <div class="visitor-counter-card" aria-label="Total website visitors">
+        <div class="visitor-counter-icon" aria-hidden="true">
+          <i class="fa-solid fa-eye"></i>
+        </div>
+        <div class="visitor-counter-number" id="visitor-count" aria-live="polite">
+          <span class="visitor-skeleton"></span>
+        </div>
+        <div class="visitor-counter-label">Total Visitors</div>
+      </div>
+
+      <!-- Footer Bottom (Copyright & Built By) -->
+      <div class="w-full flex flex-col md:flex-row items-center justify-between gap-4 pt-6 border-t border-white/5">
+        <!-- Footer content injected by script.js -->
+        <div id="footer-content"></div>
+        <p>Built By <span class="text-primary"></span> Abhishek Kamble</p>
+      </div>
     </div>
   </footer>
 
