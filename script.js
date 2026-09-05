@@ -603,13 +603,13 @@ function initVisitorCounter() {
       if (!isNaN(count)) {
         animateVisitorCounter(counterEl, count);
       } else {
-        counterEl.innerHTML = '<span class="visitor-number-animate">1,248</span>';
+        animateVisitorCounter(counterEl, 423);
       }
     })
     .catch((err) => {
       console.warn('Visitor counter notice:', err.message);
       // Fallback if offline or blocked by ad-blocker extension
-      counterEl.innerHTML = '<span class="visitor-number-animate">1,248</span>';
+      animateVisitorCounter(counterEl, 423);
     });
 }
 
